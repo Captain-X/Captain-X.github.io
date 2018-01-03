@@ -256,7 +256,7 @@
               
                 
                 <a class="post-title-link" href="/5.1/" itemprop="url">
-                  5.1
+                  统计决策理论
                 </a>
               
             
@@ -299,7 +299,18 @@
       
         
           
-            <p>统计决策问题</p>
+            <p>决策问题的三个要素：状态集$\Theta=\{\theta\}$，行动集$\Delta=\{a\}$和收益函数$Q=(\theta,a)$，为了更好地做出决策，可以利用先验信息和样本信息。利用样本信息的决策问题称为统计决策问题，如果还利用先验信息，就称为Bayes决策问题。</p>
+<p>损失函数<br>$$<br>L(\theta,a)=\lambda(\theta)\cdot g(|a-\theta|)<br>$$<br>其中$\lambda(\theta)&gt;0$，且有限，它反映决策中，由于$\theta$的不同，即使同一个偏差$|a-\theta|$造成的危害性常常不一样。g是非降函数。</p>
+<ol>
+<li><p>加权平方损失函数<br>$$<br>L(\theta,a)=\lambda(\theta)\cdot (a-\theta)^2<br>$$</p>
+</li>
+<li><p>线性损失函数<br>$$<br>L(\theta,a) =<br>\begin{cases}<br>K_0(\theta-a),  &amp; a\le\theta\\<br>K_1(a-\theta), &amp; a&gt;\theta<br>\end{cases}<br>$$<br>​</p>
+</li>
+<li><p>0-1损失函数<br>$$<br>L(\theta,a) =<br>\begin{cases}<br>0,  &amp; |a-\theta|\le\epsilon \\<br>1, &amp; |a-\theta|&gt;\epsilon<br>\end{cases}<br>$$<br>​</p>
+</li>
+<li><p>多元二次损失函数<br>$$<br>L(\boldsymbol{\theta},\boldsymbol{a})=(\boldsymbol{a}-\boldsymbol{\theta})’\boldsymbol{A}(\boldsymbol{a}-\boldsymbol{\theta})<br>$$<br>​</p>
+</li>
+</ol>
 
           
         
