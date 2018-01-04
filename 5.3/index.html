@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="bayes," />
 
 
 
@@ -84,19 +84,19 @@
 
 
 
-<meta name="description" content="决策问题的三个要素：状态集$\Theta=\{\theta\}$，行动集$\Delta=\{a\}$和收益函数$Q=(\theta,a)$，为了更好地做出决策，可以利用先验信息和样本信息。利用样本信息的决策问题称为统计决策问题，如果还利用先验信息，就称为Bayes决策问题。
-损失函数$$L(\theta,a)=\lambda(\theta)\cdot g(|a-\theta|)$$其中$\lamb">
+<meta name="description" content="容许性
+​">
 <meta property="og:type" content="article">
-<meta property="og:title" content="统计决策理论">
-<meta property="og:url" content="https://Captain-X.github.io/5.1/index.html">
+<meta property="og:title" content="决策函数的容许性">
+<meta property="og:url" content="https://Captain-X.github.io/5.3/index.html">
 <meta property="og:site_name" content="Vinci">
-<meta property="og:description" content="决策问题的三个要素：状态集$\Theta=\{\theta\}$，行动集$\Delta=\{a\}$和收益函数$Q=(\theta,a)$，为了更好地做出决策，可以利用先验信息和样本信息。利用样本信息的决策问题称为统计决策问题，如果还利用先验信息，就称为Bayes决策问题。
-损失函数$$L(\theta,a)=\lambda(\theta)\cdot g(|a-\theta|)$$其中$\lamb">
-<meta property="og:updated_time" content="2018-01-03T17:02:06.199Z">
+<meta property="og:description" content="容许性
+​">
+<meta property="og:updated_time" content="2018-01-04T09:10:13.908Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="统计决策理论">
-<meta name="twitter:description" content="决策问题的三个要素：状态集$\Theta=\{\theta\}$，行动集$\Delta=\{a\}$和收益函数$Q=(\theta,a)$，为了更好地做出决策，可以利用先验信息和样本信息。利用样本信息的决策问题称为统计决策问题，如果还利用先验信息，就称为Bayes决策问题。
-损失函数$$L(\theta,a)=\lambda(\theta)\cdot g(|a-\theta|)$$其中$\lamb">
+<meta name="twitter:title" content="决策函数的容许性">
+<meta name="twitter:description" content="容许性
+​">
 
 
 
@@ -117,9 +117,9 @@
 
 
 
-  <link rel="canonical" href="https://Captain-X.github.io/5.1/"/>
+  <link rel="canonical" href="https://Captain-X.github.io/5.3/"/>
 
-  <title> 统计决策理论 | Vinci </title>
+  <title> 决策函数的容许性 | Vinci </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -259,7 +259,7 @@
             
             
               
-                统计决策理论
+                决策函数的容许性
               
             
           </h1>
@@ -271,8 +271,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2018-01-03T04:07:12-05:00" content="2018-01-03">
-              2018-01-03
+            <time itemprop="dateCreated" datetime="2018-01-04T03:42:35-05:00" content="2018-01-04">
+              2018-01-04
             </time>
           </span>
 
@@ -299,18 +299,8 @@
       
 
       
-        <p>决策问题的三个要素：状态集$\Theta=\{\theta\}$，行动集$\Delta=\{a\}$和收益函数$Q=(\theta,a)$，为了更好地做出决策，可以利用先验信息和样本信息。利用样本信息的决策问题称为统计决策问题，如果还利用先验信息，就称为Bayes决策问题。</p>
-<p>损失函数<br>$$<br>L(\theta,a)=\lambda(\theta)\cdot g(|a-\theta|)<br>$$<br>其中$\lambda(\theta)&gt;0$，且有限，它反映决策中，由于$\theta$的不同，即使同一个偏差$|a-\theta|$造成的危害性常常不一样。g是非降函数。</p>
-<ol>
-<li><p>加权平方损失函数<br>$$<br>L(\theta,a)=\lambda(\theta)\cdot (a-\theta)^2<br>$$</p>
-</li>
-<li><p>线性损失函数<br>$$<br>L(\theta,a) =<br>\begin{cases}<br>K_0(\theta-a),  &amp; a\le\theta\\<br>K_1(a-\theta), &amp; a&gt;\theta<br>\end{cases}<br>$$<br>​</p>
-</li>
-<li><p>0-1损失函数<br>$$<br>L(\theta,a) =<br>\begin{cases}<br>0,  &amp; |a-\theta|\le\epsilon \\<br>1, &amp; |a-\theta|&gt;\epsilon<br>\end{cases}<br>$$<br>​</p>
-</li>
-<li><p>多元二次损失函数<br>$$<br>L(\boldsymbol{\theta},\boldsymbol{a})=(\boldsymbol{a}-\boldsymbol{\theta})’\boldsymbol{A}(\boldsymbol{a}-\boldsymbol{\theta})<br>$$<br>​</p>
-</li>
-</ol>
+        <p>容许性</p>
+<p>​</p>
 
       
     </div>
@@ -330,6 +320,12 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/bayes/" rel="tag">#bayes</a>
+          
+        </div>
       
 
       
@@ -417,6 +413,13 @@
 
           
 
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
           
 
         </nav>
