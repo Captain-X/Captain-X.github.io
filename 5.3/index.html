@@ -84,19 +84,19 @@
 
 
 
-<meta name="description" content="决策问题的三个要素：状态集$\Theta=\{\theta\}$，行动集$\Delta=\{a\}$和收益函数$Q=(\theta,a)$，为了更好地做出决策，可以利用先验信息和样本信息。利用样本信息的决策问题称为统计决策问题，如果还利用先验信息，就称为Bayes决策问题。统计决策问题的三个基本要素是可控参数统计结构，行动空间和损失函数。
-损失函数$$L(\theta,a)=\lambda(\th">
+<meta name="description" content="容许性利用风险函数对决策函数的容许性进行评价不在于选优，而在于除劣，实际意义在于缩小挑选的范围。
+$\delta_0(D|x)$称为非容许的，如果$\bar {\mathscr D}$中存在另一个决策函数$\delta_1(D|x)$对于任意$\theta\in \Theta$风险函数都小于等于$R(\theta,\delta_0)$，而且存在一个状态$\theta_0$下，$R(\theta_0">
 <meta property="og:type" content="article">
-<meta property="og:title" content="统计决策理论">
+<meta property="og:title" content="决策函数的容许性">
 <meta property="og:url" content="https://Captain-X.github.io/5.3/index.html">
 <meta property="og:site_name" content="Vinci">
-<meta property="og:description" content="决策问题的三个要素：状态集$\Theta=\{\theta\}$，行动集$\Delta=\{a\}$和收益函数$Q=(\theta,a)$，为了更好地做出决策，可以利用先验信息和样本信息。利用样本信息的决策问题称为统计决策问题，如果还利用先验信息，就称为Bayes决策问题。统计决策问题的三个基本要素是可控参数统计结构，行动空间和损失函数。
-损失函数$$L(\theta,a)=\lambda(\th">
-<meta property="og:updated_time" content="2018-01-08T15:53:27.055Z">
+<meta property="og:description" content="容许性利用风险函数对决策函数的容许性进行评价不在于选优，而在于除劣，实际意义在于缩小挑选的范围。
+$\delta_0(D|x)$称为非容许的，如果$\bar {\mathscr D}$中存在另一个决策函数$\delta_1(D|x)$对于任意$\theta\in \Theta$风险函数都小于等于$R(\theta,\delta_0)$，而且存在一个状态$\theta_0$下，$R(\theta_0">
+<meta property="og:updated_time" content="2018-01-08T15:53:39.882Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="统计决策理论">
-<meta name="twitter:description" content="决策问题的三个要素：状态集$\Theta=\{\theta\}$，行动集$\Delta=\{a\}$和收益函数$Q=(\theta,a)$，为了更好地做出决策，可以利用先验信息和样本信息。利用样本信息的决策问题称为统计决策问题，如果还利用先验信息，就称为Bayes决策问题。统计决策问题的三个基本要素是可控参数统计结构，行动空间和损失函数。
-损失函数$$L(\theta,a)=\lambda(\th">
+<meta name="twitter:title" content="决策函数的容许性">
+<meta name="twitter:description" content="容许性利用风险函数对决策函数的容许性进行评价不在于选优，而在于除劣，实际意义在于缩小挑选的范围。
+$\delta_0(D|x)$称为非容许的，如果$\bar {\mathscr D}$中存在另一个决策函数$\delta_1(D|x)$对于任意$\theta\in \Theta$风险函数都小于等于$R(\theta,\delta_0)$，而且存在一个状态$\theta_0$下，$R(\theta_0">
 
 
 
@@ -119,7 +119,7 @@
 
   <link rel="canonical" href="https://Captain-X.github.io/5.3/"/>
 
-  <title> 统计决策理论 | Vinci </title>
+  <title> 决策函数的容许性 | Vinci </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -259,7 +259,7 @@
             
             
               
-                统计决策理论
+                决策函数的容许性
               
             
           </h1>
@@ -271,8 +271,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2018-01-04T03:42:35-05:00" content="2018-01-04">
-              2018-01-04
+            <time itemprop="dateCreated" datetime="2018-01-08T10:51:31-05:00" content="2018-01-08">
+              2018-01-08
             </time>
           </span>
 
@@ -299,27 +299,10 @@
       
 
       
-        <p>决策问题的三个要素：状态集$\Theta=\{\theta\}$，行动集$\Delta=\{a\}$和收益函数$Q=(\theta,a)$，为了更好地做出决策，可以利用先验信息和样本信息。利用样本信息的决策问题称为统计决策问题，如果还利用先验信息，就称为Bayes决策问题。统计决策问题的三个基本要素是可控参数统计结构，行动空间和损失函数。</p>
-<h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p>$$<br>L(\theta,a)=\lambda(\theta)\cdot g(|a-\theta|)<br>$$</p>
-<p>其中$\lambda(\theta)&gt;0$，且有限，它反映决策中，由于$\theta$的不同，即使同一个偏差$|a-\theta|$造成的危害性常常不一样。$g$是非降函数。</p>
-<ol>
-<li><p>加权平方损失函数<br>$$<br>L(\theta,a)=\lambda(\theta)\cdot (a-\theta)^2<br>$$<br>常选用平方损失函数的原因是二次函数是$g$在零点展开成Taylor级数的近似，也因为与最小二乘法形式相似，便于计算，但是失真之处在于不是上有界，致使损失随偏差按平方率增大直至无穷。</p>
-</li>
-<li><p>线性损失函数<br>$$<br>L(\theta,a) =<br>\begin{cases}<br>K_0(\theta-a),  &amp; a\le\theta\\<br>K_1(a-\theta), &amp; a&gt;\theta<br>\end{cases}<br>$$<br>$K_0, K_1$为常数，反映行动$a$低于或高于状态$\theta$的相对重要性。</p>
-</li>
-<li><p>0-1损失函数<br>$$<br>L(\theta,a) =<br>\begin{cases}<br>0,  &amp; |a-\theta|\le\epsilon \\<br>1, &amp; |a-\theta|&gt;\epsilon<br>\end{cases}<br>$$<br>常在两行动决策问题中使用。</p>
-</li>
-<li><p>多元二次损失函数<br>$$<br>L(\boldsymbol{\theta},\boldsymbol{a})=(\boldsymbol{a}-\boldsymbol{\theta})’\boldsymbol{A}(\boldsymbol{a}-\boldsymbol{\theta})<br>$$<br>$\boldsymbol{\theta}’=(\theta_1,\cdots,\theta_p), \boldsymbol{a}’=(a_1,\cdots,a_p)$，$\boldsymbol{A}$为$p\times p$阶正定矩阵。当$\boldsymbol{A}$为对角阵，等于$\text{diag}(w_1,\cdots,w_p)$时，$p$元损失函数为<br>$$<br>L(\boldsymbol{\theta},\boldsymbol{a})=\sum^p_{i=1}w_i(a_i-\theta_i)^2<br>$$</p>
-</li>
-</ol>
-<h3 id="决策函数"><a href="#决策函数" class="headerlink" title="决策函数"></a>决策函数</h3><p>在一个统计决策问题中，从样本空间到行动空间的一个可测映照$\delta(x)$成为（非随机化）决策函数，非随机化是指样本一旦确定，所采取的行动也唯一确定，再无任何随机性可言。</p>
-<h3 id="风险函数"><a href="#风险函数" class="headerlink" title="风险函数"></a>风险函数</h3><p>风险就是平均损失，是损失函数$L(\theta,\delta(X))$关于样本$X$的分布$p_\theta(x)$的数学期望。<br>$$<br>R(\theta,\delta)=E_{X|\theta}[L(\theta,\delta(X))]=\int_\mathscr X L(\theta,\delta(x))p_\theta(x) \rm d\mu<br>$$</p>
-<h3 id="最小最大估计"><a href="#最小最大估计" class="headerlink" title="最小最大估计"></a>最小最大估计</h3><p>在样本空间$\mathscr X$到行动空间$\Delta$上的一切决策函数构成的决策函数类$\mathscr D$中寻找一致最优决策函数往往不能奏效，只能在其中一个特定子类$\mathscr D_1\subset \mathscr D$才有可能找到一致最优决策函数，或者扩大到随机化决策函数类中才能寻得一致最优决策函数。假如我们不是全面对风险函数进行逐点比较，而只对风险函数某一侧面进行比较，选出在这一侧面上最优的决策函数，这就形成了众多的统计决策准则，其中尤以最小最大准则和Bayes风险准则最常用和最有意义。</p>
-<p>Minimax准则是对$\mathscr D$中每个决策函数算出其最大风险值，再在所有最大风险值中选取相对最小值。它是预防最大风险值出现的一种稳妥保守的策略（e.g. 买保险）。<br>$$<br>\sup_{\theta\in\Theta} R(\theta,\delta\text{*}(x))=\inf_{\delta(x)\in\mathscr D} \sup_{\theta\in\Theta}R(\theta,\delta(x))<br>$$<br>例. 设$X$是正态总体$\mathcal N(\theta,1)$抽取的容量为1的样本，寻找$\theta$的估计。若取平方损失，则$\mathscr D_1=\{\delta_c:\delta_c(X)=cX,c\in R\}$中任一个估计的风险函数为<br>$$<br>R(\theta,\delta_c)=E_{x|\theta}(cX-\theta)^2=E_{x|\theta}[c(X-\theta)+(c-1)\theta]^2=c^2+(c-1)^2\theta^2<br>$$<br>当$c\ge1$时，$\delta_1(X)=X$是最优，但当$c&lt;1$时，诸风险函数呈交叉状态，故对诸风险函数逐点比较在$\mathscr D_1$中没有一致最小风险估计，但它们的最大风险可以算出<br>$$<br>\sup_{\theta\in R}R(\theta,\delta_c)=\sup_{\theta\in R}[c^2+(c-1)^2\theta^2]=<br>\begin{cases}<br>1, &amp; c=1\\<br>\infty , &amp; c\ne 1<br>\end{cases}<br>$$<br>按最小最大准则，$\delta_1(X)=X$是$\theta$在$\mathscr D_1$中的最小最大估计，其最小最大风险为1。</p>
-<h3 id="随机化决策函数"><a href="#随机化决策函数" class="headerlink" title="随机化决策函数"></a>随机化决策函数</h3><p>有时即使样本的观察值$x$给定，还有必要以某种随机方式在$\Delta$中选取决策行动才能改善决策效果。若把非随机决策函数$\delta(x)$看作一次抽样，随机化决策函数$\delta(D|x )$可看作二次抽样：先在样本空间$\mathscr X$中按照总体分布$p_\theta(x)$随机抽取一个样本$x_0$，与此同时就确定了一个条件分布$\delta(D|x_0 )$；再在行动空间中按条件分布$\delta(D|x_0 )$抽取一个行动，用此行动对自然界的状态或参数做出判断。随机化决策函数在实际中很少被采用，因为把行动的最后决策留给某种随机化方法来决定对于当今的决策者是难以接受的，但是在遇到聪明的对手时，随机化决策是最好的方法。</p>
-<p>按随机化决策函数确定的行动具有二重随机性，要作二次平均才能确定损失函数和风险函数。<br>$$<br>\bar L(\theta,\delta)=E_{a|x}[L(\theta,a)]=\int_\Delta L(\theta,a)\delta(\text{d} a|x)\\<br>R(\theta,\delta)=E_{x|\theta}\{E_{a|x}[L(\theta,a)]\}=\int_\mathscr X\left\{\int_\Delta L(\theta,a)\delta(\text{d} a|x)\right\}p_\theta(x)\text{d}x<br>$$<br>例. $X\sim P(\lambda),$其中$\lambda\in\{1,2\}.$ 根据一次试验结果 $x$，构造两个非随机化决策函数<br>$$<br>\delta_1(x)=<br>\begin{cases}<br>\lambda_1 &amp;x=0\\<br>\lambda_2 &amp; x=1,2,\cdots<br>\end{cases}\quad<br>\delta_2(x)=<br>\begin{cases}<br>\lambda_1 &amp;x=0,1\\<br>\lambda_2 &amp; x=2,3,\cdots<br>\end{cases}\\<br>\text{取损失矩阵如下}<br>L=<br>\begin{bmatrix}<br>0&amp;50\\<br>100&amp;0<br>\end{bmatrix}<br>$$<br>$R(\lambda_1,\delta_1)=50\cdot P_{\lambda_1}(x&gt;0)=50\times0.6321=31.61,R(\lambda_2,\delta_1)=100\cdot P_{\lambda_2}(x=0)=100\times0.1353=13.53$</p>
-<p>$R(\lambda_1,\delta_2)=50\cdot P_{\lambda_1}(x&gt;1)=50\times0.2642=13.21,R(\lambda_2,\delta_2)=100\cdot P_{\lambda_2}(x\le1)=100\times0.4060=40.60$</p>
-<p>每个估计量$\delta_j$在$\lambda_1$和$\lambda_2$各有一个风险值，记为$y_1$和$y_2$，把$y_1$和$y_2$看作平面直角坐标系的两个坐标，那么任一估计量就对应平面第一象限中的一点。我们把随机化估计增加到估计类$\mathscr D_1$中去，先考虑一种特殊形式$\delta\text_$，它在样本$x$给定条件下以概率$p$取$\delta_1(x)$，以概率$1-p$取$\delta_2(x)$，所以有$\delta\text_(0)=\lambda_1$，$\delta\text_(2)=\delta\text_(3)=\cdots=\lambda_2$，而$\delta\text_(1)$是一个随机变量，以概率$1-p$取$\lambda_1$，以概率$p$取$\lambda_2$.<br>$$<br>\begin{align}<br>R(\lambda_i,\delta\text_) &amp;=\sum_x\bar L(\lambda_i,\delta\text*(x))P_{\lambda_i}(x)\\<br>&amp;=\sum_x[ L(\lambda_i,\delta_1(x))p+L(\lambda_i,\delta_2(x))(1-p)]P_{\lambda_i}(x)\\<br>&amp;=\sum_x L(\lambda_i,\delta_1)P_{\lambda_i}(x)p+\sum_x L(\lambda_i,\delta_2)P_{\lambda_i}(x)(1-p)\\<br>&amp;=R(\lambda_i,\delta_1)p+R(\lambda_i,\delta_2)(1-p)<br>\end{align}<br>$$<br>由此看出，这种随机化估计量$\delta\text*(x)$对应的点是在$\delta_1(x)$和$\delta_2(x)$的连线上。直线$y_1=y_2$与这条连线的交点即是此决策函数类中的最小最大估计，最小最大风险为24.28，优于原非随机化决策函数。<br>$$<br>31.6p+13.5(1-p)=13.2p+40.6(1-p)\\<br>p=0.6<br>$$<br>这个估计仅在$x=1$时是随机的，其他样本条件下都是非随机的。</p>
+        <h3 id="容许性"><a href="#容许性" class="headerlink" title="容许性"></a>容许性</h3><p>利用风险函数对决策函数的容许性进行评价不在于选优，而在于除劣，实际意义在于缩小挑选的范围。</p>
+<p>$\delta_0(D|x)$称为非容许的，如果$\bar {\mathscr D}$中存在另一个决策函数$\delta_1(D|x)$对于任意$\theta\in \Theta$风险函数都小于等于$R(\theta,\delta_0)$，而且存在一个状态$\theta_0$下，$R(\theta_0,\delta_1)&lt;R(\theta_0,\delta_0)$，（风险一致更小）。</p>
+<h3 id="Stein效应"><a href="#Stein效应" class="headerlink" title="Stein效应"></a>Stein效应</h3><p>正态均值用其样本均值去估计有很好的性质，它是无偏的，方差最小的和有效的。但是当把这样的估计推广到$p$元正态分布场合时出现了问题。在二次损失函数下，$p\ge3$时，样本均值向量是正态均值向量的非容许估计。<br>$$<br>\boldsymbol\delta^{JS}(\boldsymbol X)=\left(1-{p-2\over \boldsymbol X’\boldsymbol X}\right)\boldsymbol X<br>$$</p>
+<h3 id="单参数指数族中的容许性问题"><a href="#单参数指数族中的容许性问题" class="headerlink" title="单参数指数族中的容许性问题"></a>单参数指数族中的容许性问题</h3><h3 id="最小最大估计的容许性"><a href="#最小最大估计的容许性" class="headerlink" title="最小最大估计的容许性"></a>最小最大估计的容许性</h3><p>在一个统计决策问题中，假如$\delta_0(x)$是参数$\theta$的唯一最小最大估计，则$\delta_0(x)$也是参数$\theta$的容许估计。假如$\delta_0(x)$是参数$\theta$的容许估计，且在参数空间$\Theta$上有常数风险，则$\delta_0(x)$也是参数$\theta$的最小最大估计。（均用反证法证）</p>
 
       
     </div>
@@ -351,17 +334,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/Euler's_theorem/" rel="next" title="Euler's theorem">
-                <i class="fa fa-chevron-left"></i> Euler's theorem
+              <a href="/5.1_2/" rel="next" title="统计决策理论">
+                <i class="fa fa-chevron-left"></i> 统计决策理论
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/5.31/" rel="prev" title="决策函数的容许性">
-                决策函数的容许性 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -493,7 +472,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#损失函数"><span class="nav-number">1.</span> <span class="nav-text">损失函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#决策函数"><span class="nav-number">2.</span> <span class="nav-text">决策函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#风险函数"><span class="nav-number">3.</span> <span class="nav-text">风险函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最小最大估计"><span class="nav-number">4.</span> <span class="nav-text">最小最大估计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#随机化决策函数"><span class="nav-number">5.</span> <span class="nav-text">随机化决策函数</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#容许性"><span class="nav-number">1.</span> <span class="nav-text">容许性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Stein效应"><span class="nav-number">2.</span> <span class="nav-text">Stein效应</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#单参数指数族中的容许性问题"><span class="nav-number">3.</span> <span class="nav-text">单参数指数族中的容许性问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最小最大估计的容许性"><span class="nav-number">4.</span> <span class="nav-text">最小最大估计的容许性</span></a></li></ol></div>
             
           </div>
         </section>
