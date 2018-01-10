@@ -93,7 +93,7 @@ Bayes学派最基本的观点是：任一未知量$\theta$都可以看作随机�
 <meta property="og:description" content="先验分布经典统计推断的主要依据是样本信息，来自于“新鲜的”从总体抽取出来的样本，而经验和历史资料也可以用于统计推断和统计决策，它们大多存在于抽样试验之前，称为先验信息。
 Bayes学派最基本的观点是：任一未知量$\theta$都可以看作随机变量，可用一个概率分布去描述，这个分布称为先验分布。如今经典学派已不反对这一观点，现在两派争论的焦点是如何利用各种先验信息合理地确定先验分布。先验分布切不可草率">
 <meta property="og:image" content="https://Captain-X.github.io/..\img\bayes.png">
-<meta property="og:updated_time" content="2018-01-10T08:28:36.716Z">
+<meta property="og:updated_time" content="2018-01-10T09:56:40.559Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bayes决策准则">
 <meta name="twitter:description" content="先验分布经典统计推断的主要依据是样本信息，来自于“新鲜的”从总体抽取出来的样本，而经验和历史资料也可以用于统计推断和统计决策，它们大多存在于抽样试验之前，称为先验信息。
@@ -367,7 +367,45 @@ Bayes学派最基本的观点是：任一未知量$\theta$都可以看作随机�
 </tr>
 </tbody>
 </table>
-<p>例. $X_1,X_2,\cdots,X_n$是来自于正态分布$\mathcal N(\theta,\sigma^2)$的一个样本，其中$\sigma^2$已知，此样本的联合密度函数为<br>$$<br>p(x|\theta)=\left(\frac{1}{\sqrt{2\pi}\sigma}\right)^n\exp\left\{-\frac{1}{2\sigma^2}\sum_{i=1}^n(x_i-\theta)^2\right\}<br>$$<br>现取另一正态分布$\mathcal N(\mu,\tau^2)$作为正态均值$\theta$的先验分布，<br>$$<br>\pi(\theta)=\frac{1}{\sqrt {2\pi}\tau}\exp \left\{-\frac{1}{2\tau^2}(\theta-\mu)^2\right\}\\<br>h(x,\theta)=K_1\exp\left\{-\frac{1}{2}[A\theta^2-2B\theta+C]\right\}=K_1\exp\left\{-\frac{(\theta-B/A)^2}{2/A}-\frac{1}{2}(C-B^2/A)\right\}\\<br>其中K_1=(2\pi)^{-(n+1)/2}\tau^{-1}\sigma^{-n},\sigma_0^=\frac{\sigma^2}{n},A=\frac{1}{\sigma_0^2}+\frac{1}{\tau^2},B=\frac{\bar x}{\sigma_0^2}+\frac{\mu}{\tau^2},C=\frac{\sum_{i=1}^n x_i^2}{\sigma^2}+\frac{\mu^2}{\tau^2}\\<br>m(x)=\int_{-\infty}^\infty h(x,\theta)\text d \theta=K_1\exp\left\{-\frac{1}{2}(C-B^2/A)\right\}\sqrt\frac{2\pi}{A}\\<br>\pi(\theta|x)=\sqrt\frac{A}{2\pi}\exp\left\{-\frac{(\theta-B/A)^2}{2/A}\right\}<br>$$<br>后验分布为$\mathcal N(\frac{B}{A},\frac{1}{A})$，均值$\displaystyle \mu_1=\frac{B}{A}=\frac{\bar x\sigma_0^{-2}+\mu\tau^{-2}}{\sigma_0^{-2}+\tau^{-2}}$，方差$\tau_1^2=(\sigma_0^{-2}+\tau^{-2})^{-1}$</p>
+<p>例. $X_1,X_2,\cdots,X_n$是来自于正态分布$\mathcal N(\theta,\sigma^2)$的一个样本，其中$\sigma^2$已知，此样本的联合密度函数为<br>$$<br>p(x|\theta)=\left(\frac{1}{\sqrt{2\pi}\sigma}\right)^n\exp\left\{-\frac{1}{2\sigma^2}\sum_{i=1}^n(x_i-\theta)^2\right\}<br>$$<br>现取另一正态分布$\mathcal N(\mu,\tau^2)$作为正态均值$\theta$的先验分布，<br>$$<br>\pi(\theta)=\frac{1}{\sqrt {2\pi}\tau}\exp \left\{-\frac{1}{2\tau^2}(\theta-\mu)^2\right\}\\<br>h(x,\theta)=K_1\exp\left\{-\frac{1}{2}[A\theta^2-2B\theta+C]\right\}=K_1\exp\left\{-\frac{(\theta-B/A)^2}{2/A}-\frac{1}{2}(C-B^2/A)\right\}\\<br>其中K_1=(2\pi)^{-(n+1)/2}\tau^{-1}\sigma^{-n},\sigma_0^=\frac{\sigma^2}{n},A=\frac{1}{\sigma_0^2}+\frac{1}{\tau^2},B=\frac{\bar x}{\sigma_0^2}+\frac{\mu}{\tau^2},C=\frac{\sum_{i=1}^n x_i^2}{\sigma^2}+\frac{\mu^2}{\tau^2}\\<br>m(x)=\int_{-\infty}^\infty h(x,\theta)\text d \theta=K_1\exp\left\{-\frac{1}{2}(C-B^2/A)\right\}\sqrt\frac{2\pi}{A}\\<br>\pi(\theta|x)=\sqrt\frac{A}{2\pi}\exp\left\{-\frac{(\theta-B/A)^2}{2/A}\right\}<br>$$<br>后验分布为$\mathcal N(\frac{B}{A},\frac{1}{A})$，均值$\displaystyle \mu_1=\frac{B}{A}=\frac{\bar x\sigma_0^{-2}+\mu\tau^{-2}}{\sigma_0^{-2}+\tau^{-2}}$，方差$\displaystyle \tau_1^2=\frac{1}{A}=(\sigma_0^{-2}+\tau^{-2})^{-1}$</p>
+<p>可以发现后验均值是先验均值和样本均值的加权平均$\mu_1=\lambda\mu+(1-\lambda)\bar x,\lambda=\tau^{-2}/(\sigma_0^{-2}+\tau^{-2})$，先验方差越小（先验分布越集中，对先验均值越确信），先验均值在后验均值中的比重越大，相反，若先验方差越大则先验均值的比重越小，当先验方差趋于无穷（先验分布为均匀分布）时，后验均值等于样本均值，这可以描述为采用无信息先验分布时，估计只利用了样本信息，实际上就等于通过样本算得的MLE或矩估计值。另一方面，当样本量$n$越大时，$\sigma_0^2=\sigma^2/n$越小，从而样本均值在后验均值中的比重越大，特别当$n$无限增大时，先验均值在后验均值中已是微不足道。</p>
+<h3 id="核"><a href="#核" class="headerlink" title="核"></a>核</h3><p>正态分布的密度函数可以表示为$p(x)\propto\exp\{-(x-\mu)^2/2\sigma^2\}$，正比于符号两侧只相差一个不依赖于密度函数的主元$x$的因子，利用分布的正则性，不难恢复这个因子。熟悉分布的核可以简化后验分布的计算，后验分布$\pi(\theta|x)$的核一定是$\theta$的函数，Bayes公式中的分母$m(x)$是与$\theta$无关的因子，可以略去，从而有$\pi(\theta|x)\propto p(x|\theta)\pi(\theta)$，还可以进一步用$p(x|\theta)$和$\pi(\theta)$的核代入简化运算。如在上例中：<br>$$<br>\begin{align}<br>\pi(\theta|x)&amp; \propto p(x|\theta)\pi(\theta)\\<br>&amp;\propto \exp\left\{-\frac{1}{2\sigma^2}\sum_{i=1}^n(x_i-\theta)^2\right\}\exp \left\{-\frac{1}{2\tau^2}(\theta-\mu)^2\right\}\\<br>&amp;\propto \exp\{-\frac{1}{2}[A\theta^2-2B\theta]\}\\<br>&amp;\propto \exp\{-\frac{A}{2}(\theta-B/A)^2\}<br>\end{align}<br>$$<br>可以看出后验分布为$\mathcal N(1/A,B/A)$.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">分布</th>
+<th style="text-align:center">核</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">$b(n,\theta)$</td>
+<td style="text-align:center">$\theta^x(1-\theta)^{n-x}$</td>
+</tr>
+<tr>
+<td style="text-align:center">$P(\lambda)$</td>
+<td style="text-align:center">$\lambda^xe^{-\lambda}$</td>
+</tr>
+<tr>
+<td style="text-align:center">$Be(a,b)$</td>
+<td style="text-align:center">$x^{a-1}(1-x)^{b-1}$</td>
+</tr>
+<tr>
+<td style="text-align:center">$Ga(a,\lambda)$</td>
+<td style="text-align:center">$x^{a-1}e^{-\lambda x}$</td>
+</tr>
+<tr>
+<td style="text-align:center">$N(\mu,\sigma^2)$</td>
+<td style="text-align:center">$\exp \{-(x-\mu)^2/2\sigma^2\}$</td>
+</tr>
+</tbody>
+</table>
+<p>又例. 二项分布中对成功概率$\theta$的估计。总体$X\sim b(n,\theta)$的核为$\theta^x(1-\theta)^{n-x}$，先验分布$Be(a,b)$的核为$\theta^{a-1}(1-\theta)^{b-1}$，后验分布$\pi(\theta|x)\propto\theta^{a+x-1}(1-\theta)^{b+n-x-1}$，这就是Beta分布$Be(a+x,b+n-x)$的核，均值先验均值和样本均值的加权和<br>$$<br>\frac{a+x}{a+b+n}=\frac{a+b}{a+b+n}\frac{a}{a+b}+\frac{n}{a+b+n}\frac{x}{n}<br>$$<br>先验分布中所含的参数称为超参数，下面以前面的共轭先验分布$Be(a,b)$为例讨论确定超参数的几个途径。</p>
+<p>1) 假如</p>
+<p>（这个地方的理解，在先验信息关键参数都未知的情况下，历史样本（还是可以理解为样本）用作确定先验信息而非当作样本信息。因为先验信息实在有限，看上去没有必要用Bayes估计。但是倘若用这些样本直接来估计未知量，只能得到一个估计值。若以Bayes学派的观点，未知量都应该看作随机变量，用概率分布描述，而利用先验信息中分布为Beta分布的信息用Bayes估计可以得到未知量的一个分布，更符合Bayes学派对未知量的理解。）</p>
+<p>2) 假如根据先验信息只能获得先验均值$\bar \theta$，令$\frac{a}{a+b}=\bar \theta$，一个方程无法确定两个参数，但是因为方差随$a+b$增大而减小，可以根据对先验均值的确信程度来确定$a+b$的值，如果很确信，则$a+b$可以取得大一点。</p>
+<p>3) 还可通过两个分位数利用数值积分求解$a,b$.</p>
+<p>4) 如果决策者对成功概率一无所知，则可使用Bayes假设，用$Be(1,1)$作为先验分布。</p>
 <h3 id="后验风险准则"><a href="#后验风险准则" class="headerlink" title="后验风险准则"></a>后验风险准则</h3>
       
     </div>
@@ -548,7 +586,7 @@ Bayes学派最基本的观点是：任一未知量$\theta$都可以看作随机�
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#先验分布"><span class="nav-number">1.</span> <span class="nav-text">先验分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bayes风险准则"><span class="nav-number">2.</span> <span class="nav-text">Bayes风险准则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bayes公式"><span class="nav-number">3.</span> <span class="nav-text">Bayes公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#共轭先验分布"><span class="nav-number">4.</span> <span class="nav-text">共轭先验分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后验风险准则"><span class="nav-number">5.</span> <span class="nav-text">后验风险准则</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#先验分布"><span class="nav-number">1.</span> <span class="nav-text">先验分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bayes风险准则"><span class="nav-number">2.</span> <span class="nav-text">Bayes风险准则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bayes公式"><span class="nav-number">3.</span> <span class="nav-text">Bayes公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#共轭先验分布"><span class="nav-number">4.</span> <span class="nav-text">共轭先验分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#核"><span class="nav-number">5.</span> <span class="nav-text">核</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后验风险准则"><span class="nav-number">6.</span> <span class="nav-text">后验风险准则</span></a></li></ol></div>
             
           </div>
         </section>
