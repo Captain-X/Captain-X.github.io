@@ -93,7 +93,7 @@ Bayes学派最基本的观点是：任一未知量$\theta$都可以看作随机�
 <meta property="og:description" content="先验分布经典统计推断的主要依据是样本信息，来自于“新鲜的”从总体抽取出来的样本，而经验和历史资料也可以用于统计推断和统计决策，它们大多存在于抽样试验之前，称为先验信息。
 Bayes学派最基本的观点是：任一未知量$\theta$都可以看作随机变量，可用一个概率分布去描述，这个分布称为先验分布。如今经典学派已不反对这一观点，现在两派争论的焦点是如何利用各种先验信息合理地确定先验分布。先验分布切不可草率">
 <meta property="og:image" content="https://Captain-X.github.io/..\img\bayes.png">
-<meta property="og:updated_time" content="2018-01-10T01:52:23.558Z">
+<meta property="og:updated_time" content="2018-01-10T08:28:36.716Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bayes决策准则">
 <meta name="twitter:description" content="先验分布经典统计推断的主要依据是样本信息，来自于“新鲜的”从总体抽取出来的样本，而经验和历史资料也可以用于统计推断和统计决策，它们大多存在于抽样试验之前，称为先验信息。
@@ -329,9 +329,46 @@ Bayes学派最基本的观点是：任一未知量$\theta$都可以看作随机�
 <p>这个在样本给定下$\theta$的条件分布称为$\theta$的后验分布，它是在样本给定下集中了样本与先验中有关$\theta$的一s切信息，比先验分布更接近于实际情况。从总体获取样本$X$后，Bayes公式把人们对$\theta$的认识由$\pi(x)$<strong>调正</strong>到$\pi(\theta|x)$。<br>$$<br>\text{先验信息}\oplus\text{样本信息}\Rightarrow\text{后验信息}\\<br>\pi(\theta)\oplus p(x|\theta)\Rightarrow\pi(\theta|x)<br>$$<br>例. $P(A)=\theta$，为估计$\theta$做了$n$次独立观察，其中事件$A$出现的次数$X\sim b(n,\theta)$，似然函数为$p(x|\theta)=\binom{n}{x}\theta^x(1-\theta)^{n-x}$, $x=0,1,\cdots,n$. 假如在试验之前对$A$没有什么了解，说不上$\theta$的大小，建议使用Bayes假设：将$U(0,1)$作为$\theta$的先验分布。<br>$$<br>\pi(\theta)=1,0&lt;\theta&lt;1\\<br>h(x,\theta)=p(x|\theta)\pi(\theta)=\binom{n}{x}\theta^x(1-\theta)^{n-x},x=0,1,\cdots,n,0&lt;\theta&lt;1\\<br>m(x)=\int_0^1h(x,\theta)\text d\theta=\binom{n}{x}\frac{\Gamma(x+1)\Gamma(n-x+1)}{\Gamma(n+2)}\\<br>\pi(\theta|x)=\frac{h(x,\theta)}{m(x)}=\frac{\Gamma(n+2)}{\Gamma(x+1)\Gamma(n-x+1)}\cdot\theta^x(1-\theta)^{n-x},0&lt;\theta&lt;1\\<br>可见，\theta\sim Be(x+1,n-x+1)<br>$$</p>
 <div style="align: center"><br><img src="..\img\bayes.png"><br></div>
 
-
-
-<h3 id="共轭先验分布"><a href="#共轭先验分布" class="headerlink" title="共轭先验分布"></a>共轭先验分布</h3><h3 id="后验风险准则"><a href="#后验风险准则" class="headerlink" title="后验风险准则"></a>后验风险准则</h3>
+<p>定理：在有充分统计量（如正态分布中的$\bar X$和$Q$）的场合，后验分布可通过充分统计量的分布求得。</p>
+<h3 id="共轭先验分布"><a href="#共轭先验分布" class="headerlink" title="共轭先验分布"></a>共轭先验分布</h3><p>在上例中，先验分布$U(0,1)$实际上是参数为(1,1)的Beta分布，而其后验分布也为Beta分布，这一现象并非偶然，假如把$\theta$的先验分布换成一个一般的Beta分布$Be(a,b)$，其中$a&gt;0,b&gt;0$，经过类似计算后得到后验分布仍然是Beta分布$Be(a+x,b+n-x)$. 在确定总体分布族和先验分布族的情况下，若对任意的总体分布和先验分布，都有后验分布在先验分布族内，称此先验分布族为该总体分布族的共轭分布族（关于某一参数）。共轭先验分布是对某一分布中的参数而言的，离开指定参数和其所在的分布谈论共轭先验分布是没有意义的。下表是一些常用的共轭先验分布。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">总体分布</th>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">共轭先验分布</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">二项分布</td>
+<td style="text-align:center">成功概率</td>
+<td style="text-align:center">Beta分布</td>
+</tr>
+<tr>
+<td style="text-align:center">泊松分布</td>
+<td style="text-align:center">均值</td>
+<td style="text-align:center">Gamma分布</td>
+</tr>
+<tr>
+<td style="text-align:center">指数分布</td>
+<td style="text-align:center">均值倒数</td>
+<td style="text-align:center">Gamma分布</td>
+</tr>
+<tr>
+<td style="text-align:center">正态分布（方差已知）</td>
+<td style="text-align:center">均值</td>
+<td style="text-align:center">正态分布</td>
+</tr>
+<tr>
+<td style="text-align:center">正态分布（均值已知）</td>
+<td style="text-align:center">方差</td>
+<td style="text-align:center">倒Gamma分布</td>
+</tr>
+</tbody>
+</table>
+<p>例. $X_1,X_2,\cdots,X_n$是来自于正态分布$\mathcal N(\theta,\sigma^2)$的一个样本，其中$\sigma^2$已知，此样本的联合密度函数为<br>$$<br>p(x|\theta)=\left(\frac{1}{\sqrt{2\pi}\sigma}\right)^n\exp\left\{-\frac{1}{2\sigma^2}\sum_{i=1}^n(x_i-\theta)^2\right\}<br>$$<br>现取另一正态分布$\mathcal N(\mu,\tau^2)$作为正态均值$\theta$的先验分布，<br>$$<br>\pi(\theta)=\frac{1}{\sqrt {2\pi}\tau}\exp \left\{-\frac{1}{2\tau^2}(\theta-\mu)^2\right\}\\<br>h(x,\theta)=K_1\exp\left\{-\frac{1}{2}[A\theta^2-2B\theta+C]\right\}=K_1\exp\left\{-\frac{(\theta-B/A)^2}{2/A}-\frac{1}{2}(C-B^2/A)\right\}\\<br>其中K_1=(2\pi)^{-(n+1)/2}\tau^{-1}\sigma^{-n},\sigma_0^=\frac{\sigma^2}{n},A=\frac{1}{\sigma_0^2}+\frac{1}{\tau^2},B=\frac{\bar x}{\sigma_0^2}+\frac{\mu}{\tau^2},C=\frac{\sum_{i=1}^n x_i^2}{\sigma^2}+\frac{\mu^2}{\tau^2}\\<br>m(x)=\int_{-\infty}^\infty h(x,\theta)\text d \theta=K_1\exp\left\{-\frac{1}{2}(C-B^2/A)\right\}\sqrt\frac{2\pi}{A}\\<br>\pi(\theta|x)=\sqrt\frac{A}{2\pi}\exp\left\{-\frac{(\theta-B/A)^2}{2/A}\right\}<br>$$<br>后验分布为$\mathcal N(\frac{B}{A},\frac{1}{A})$，均值$\displaystyle \mu_1=\frac{B}{A}=\frac{\bar x\sigma_0^{-2}+\mu\tau^{-2}}{\sigma_0^{-2}+\tau^{-2}}$，方差$\tau_1^2=(\sigma_0^{-2}+\tau^{-2})^{-1}$</p>
+<h3 id="后验风险准则"><a href="#后验风险准则" class="headerlink" title="后验风险准则"></a>后验风险准则</h3>
       
     </div>
 
