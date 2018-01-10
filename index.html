@@ -623,12 +623,18 @@
 </tbody>
 </table>
 <p>又例. 二项分布中对成功概率$\theta$的估计。总体$X\sim b(n,\theta)$的核为$\theta^x(1-\theta)^{n-x}$，先验分布$Be(a,b)$的核为$\theta^{a-1}(1-\theta)^{b-1}$，后验分布$\pi(\theta|x)\propto\theta^{a+x-1}(1-\theta)^{b+n-x-1}$，这就是Beta分布$Be(a+x,b+n-x)$的核，均值先验均值和样本均值的加权和<br>$$<br>\frac{a+x}{a+b+n}=\frac{a+b}{a+b+n}\frac{a}{a+b}+\frac{n}{a+b+n}\frac{x}{n}<br>$$<br>先验分布中所含的参数称为超参数，下面以前面的共轭先验分布$Be(a,b)$为例讨论确定超参数的几个途径。</p>
-<p>1) 假如</p>
-<p>（这个地方的理解，在先验信息关键参数都未知的情况下，历史样本（还是可以理解为样本）用作确定先验信息而非当作样本信息。因为先验信息实在有限，看上去没有必要用Bayes估计。但是倘若用这些样本直接来估计未知量，只能得到一个估计值。若以Bayes学派的观点，未知量都应该看作随机变量，用概率分布描述，而利用先验信息中分布为Beta分布的信息用Bayes估计可以得到未知量的一个分布，更符合Bayes学派对未知量的理解。）</p>
+<p>1) 假如根据先验信息能获得成功概率的若干个观察值（一般是从历史数据整理加工获得的），可以通过矩估计法来确定两个参数。<br>$$</p>
+<p>\begin{cases}<br>\displaystyle \frac{a}{a+b}=\bar \theta=\frac{1}{n}\sum_{i=1}^n\theta_i\\<br>\displaystyle\frac{ab}{(a+b)^2(a+b+1)}=S_\theta^2=\frac{1}{n-1}\sum_{i=1}^n(\theta_i-\bar \theta)^2<br>\end{cases}</p>
+<p>$$<br>（这个地方的理解，在先验信息关键参数都未知的情况下，历史样本（还是可以理解为样本）用作确定先验信息而非当作样本信息。因为先验信息实在有限，看上去没有必要用Bayes估计。但是倘若用这些样本直接来估计未知量，只能得到一个估计值。若以Bayes学派的观点，未知量都应该看作随机变量，用概率分布描述，而利用先验信息中分布为Beta分布的信息用Bayes估计可以得到未知量的一个分布，更符合Bayes学派对未知量的理解。）</p>
 <p>2) 假如根据先验信息只能获得先验均值$\bar \theta$，令$\frac{a}{a+b}=\bar \theta$，一个方程无法确定两个参数，但是因为方差随$a+b$增大而减小，可以根据对先验均值的确信程度来确定$a+b$的值，如果很确信，则$a+b$可以取得大一点。</p>
 <p>3) 还可通过两个分位数利用数值积分求解$a,b$.</p>
 <p>4) 如果决策者对成功概率一无所知，则可使用Bayes假设，用$Be(1,1)$作为先验分布。</p>
-<h3 id="后验风险准则"><a href="#后验风险准则" class="headerlink" title="后验风险准则"></a>后验风险准则</h3>
+<h3 id="后验风险准则"><a href="#后验风险准则" class="headerlink" title="后验风险准则"></a>后验风险准则</h3><p>$\mathscr D$中任一个决策函数$\delta(x)$的损失函数对后验分布的数学期望称为后验风险<br>$$<br>R_\pi(\delta|x)=E_{\theta|x}[L(\theta,\delta(x))]=\int_\Theta L(\theta,\delta(x))\pi(\theta|x)\text d \theta<br>$$<br>$\delta\text*(x)$为该统计决策问题在后验风险准则下的最优决策函数，或者Bayes（后验型）决策函数，假如$R_\pi(\delta\text*|x)=\inf_{\delta\in\mathscr D}R_\pi(\delta|x)$.</p>
+<p>例. $X=(X_1,\cdots,X_n)$是来自正态总体$\mathcal N(\mu,1)$的一个样本，假如参数$\mu$的先验分布取为共轭先验分布$\mathcal N(0,\tau^2)$，其中$\tau$已知，损失函数取为0-1损失函数，求参数$\mu$的Bayes（后验型）估计。<br>$$<br>L(\mu,\delta)=<br>\begin{cases}<br>0,|\delta-\mu|\le\epsilon\\<br>1,|\delta-\mu|&gt;\epsilon<br>\end{cases}<br>$$</p>
+<p>$$<br>\begin{align}<br>\pi(\mu|x)&amp;\propto p(x|\mu)\pi(\mu)\\<br>&amp; \propto \exp\left\{-\frac{1}{2}[\sum_{i=1}^n (x_i-\mu)^2+\frac{\mu ^2}{\tau^2}]\right\}\\<br>&amp; \propto \exp\left\{-\frac{1}{2} (n+\tau^{-2})\mu^2+\sum_{i=1}^n x_i\mu\right\}\\<br>&amp; \propto \exp\left\{-\frac{1}{2}(n+\tau^{-2})(\mu-\frac{\sum_{i=1}^nx_i}{n+\tau^{-2}})^2\right\}<br>\end{align}\\<br>\quad\\<br>\mu\sim\mathcal N(\frac{\sum_{i=1}^nx_i}{n+\tau^{-2}},\frac{1}{n+\tau^{-2}})\\<br>R_\pi(\delta|x)=1-P(|\delta-\mu|\le\epsilon)<br>$$</p>
+<p>要在定长$2\epsilon$区间上概率最大，$\delta(x)$只能取后验分布的均值，即在此场合下，$\mu$的Bayes后验型估计为<br>$$<br>\delta_\tau(x)=\frac{\sum_{i=1}^n x_i}{n+\tau^{-2}}<br>$$<br>它与经典方法得到的估计$\bar X$是不同的，一般有$\delta_\tau(x)&lt;\bar X$，$\delta_\tau(x)$比$\bar X$更接近0，这是先验分布给我们带来一些信息之故（先验分布均值为0）. 只有当$\tau\rightarrow\infty$时，才有$\delta_\tau(x)\rightarrow\bar X$（相当于先验为Bayes假设，没有先验信息）.</p>
+<p>对给定的统计决策问题（包括先验分布的给定）和决策函数类$\mathscr D$，当Bayes风险存在有限取值时，<strong>Bayes决策函数$\delta\text_(x)$和Bayes（后验型）决策函数$\delta\text_\text*(x)$是等价的。</strong></p>
+
           
         
       
