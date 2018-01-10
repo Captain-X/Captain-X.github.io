@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="bayes," />
+  <meta name="keywords" content="stat," />
 
 
 
@@ -84,25 +84,16 @@
 
 
 
-<meta name="description" content="Bayes估计无信息先验分布Bayes假设Bayes假设是把$\theta$取值范围上的均匀分布取作$\theta$的先验分布，这是十分自然的想法，但是也会遇到一些麻烦。
-一个问题是当$\Theta$为无穷区间时，无法定义一个正常的先验分布，广义先验分布。
-另一个麻烦是Bayes假设不满足变换下的不变性
-位置参数的无信息先验尺度参数的无信息先验Jeffreys先验分布多层先验分布当所给定先验分布中">
+<meta name="description" content="重要抽样方法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Bayes分析">
-<meta property="og:url" content="https://Captain-X.github.io/5.5/index.html">
+<meta property="og:title" content="随机模拟计算">
+<meta property="og:url" content="https://Captain-X.github.io/6.2/index.html">
 <meta property="og:site_name" content="Vinci">
-<meta property="og:description" content="Bayes估计无信息先验分布Bayes假设Bayes假设是把$\theta$取值范围上的均匀分布取作$\theta$的先验分布，这是十分自然的想法，但是也会遇到一些麻烦。
-一个问题是当$\Theta$为无穷区间时，无法定义一个正常的先验分布，广义先验分布。
-另一个麻烦是Bayes假设不满足变换下的不变性
-位置参数的无信息先验尺度参数的无信息先验Jeffreys先验分布多层先验分布当所给定先验分布中">
-<meta property="og:updated_time" content="2018-01-10T18:16:20.950Z">
+<meta property="og:description" content="重要抽样方法">
+<meta property="og:updated_time" content="2018-01-10T18:13:26.229Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Bayes分析">
-<meta name="twitter:description" content="Bayes估计无信息先验分布Bayes假设Bayes假设是把$\theta$取值范围上的均匀分布取作$\theta$的先验分布，这是十分自然的想法，但是也会遇到一些麻烦。
-一个问题是当$\Theta$为无穷区间时，无法定义一个正常的先验分布，广义先验分布。
-另一个麻烦是Bayes假设不满足变换下的不变性
-位置参数的无信息先验尺度参数的无信息先验Jeffreys先验分布多层先验分布当所给定先验分布中">
+<meta name="twitter:title" content="随机模拟计算">
+<meta name="twitter:description" content="重要抽样方法">
 
 
 
@@ -123,9 +114,9 @@
 
 
 
-  <link rel="canonical" href="https://Captain-X.github.io/5.5/"/>
+  <link rel="canonical" href="https://Captain-X.github.io/6.2/"/>
 
-  <title> Bayes分析 | Vinci </title>
+  <title> 随机模拟计算 | Vinci </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -265,7 +256,7 @@
             
             
               
-                Bayes分析
+                随机模拟计算
               
             
           </h1>
@@ -277,8 +268,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2018-01-08T12:03:37-05:00" content="2018-01-08">
-              2018-01-08
+            <time itemprop="dateCreated" datetime="2018-01-10T13:11:39-05:00" content="2018-01-10">
+              2018-01-10
             </time>
           </span>
 
@@ -291,8 +282,8 @@
               <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Bayesian-Analysis/" itemprop="url" rel="index">
-                    <span itemprop="name">Bayesian Analysis</span>
+                  <a href="/categories/Statistical-Computation-Methods/" itemprop="url" rel="index">
+                    <span itemprop="name">Statistical Computation Methods</span>
                   </a>
                 </span>
 
@@ -324,12 +315,7 @@
       
 
       
-        <h3 id="Bayes估计"><a href="#Bayes估计" class="headerlink" title="Bayes估计"></a>Bayes估计</h3><h3 id="无信息先验分布"><a href="#无信息先验分布" class="headerlink" title="无信息先验分布"></a>无信息先验分布</h3><h4 id="Bayes假设"><a href="#Bayes假设" class="headerlink" title="Bayes假设"></a>Bayes假设</h4><p>Bayes假设是把$\theta$取值范围上的均匀分布取作$\theta$的先验分布，这是十分自然的想法，但是也会遇到一些麻烦。</p>
-<p>一个问题是当$\Theta$为无穷区间时，无法定义一个正常的先验分布，广义先验分布。</p>
-<p>另一个麻烦是Bayes假设不满足变换下的不变性</p>
-<h4 id="位置参数的无信息先验"><a href="#位置参数的无信息先验" class="headerlink" title="位置参数的无信息先验"></a>位置参数的无信息先验</h4><h4 id="尺度参数的无信息先验"><a href="#尺度参数的无信息先验" class="headerlink" title="尺度参数的无信息先验"></a>尺度参数的无信息先验</h4><h4 id="Jeffreys先验分布"><a href="#Jeffreys先验分布" class="headerlink" title="Jeffreys先验分布"></a>Jeffreys先验分布</h4><h3 id="多层先验分布"><a href="#多层先验分布" class="headerlink" title="多层先验分布"></a>多层先验分布</h3><p>当所给定先验分布中超参数难于确定时，可以对超参数再给出一个先验，第二个先验称为超先验。</p>
-<p>例. </p>
-<h3 id="可信域"><a href="#可信域" class="headerlink" title="可信域"></a>可信域</h3>
+        <h3 id="重要抽样方法"><a href="#重要抽样方法" class="headerlink" title="重要抽样方法"></a>重要抽样方法</h3>
       
     </div>
 
@@ -351,7 +337,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/bayes/" rel="tag">#bayes</a>
+            <a href="/tags/stat/" rel="tag">#stat</a>
           
         </div>
       
@@ -360,17 +346,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/5.4/" rel="next" title="Bayes决策准则">
-                <i class="fa fa-chevron-left"></i> Bayes决策准则
+              <a href="/6.1/" rel="next" title="随机数的产生">
+                <i class="fa fa-chevron-left"></i> 随机数的产生
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/6.1/" rel="prev" title="随机数的产生">
-                随机数的产生 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -509,7 +491,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Bayes估计"><span class="nav-number">1.</span> <span class="nav-text">Bayes估计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无信息先验分布"><span class="nav-number">2.</span> <span class="nav-text">无信息先验分布</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Bayes假设"><span class="nav-number">2.1.</span> <span class="nav-text">Bayes假设</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#位置参数的无信息先验"><span class="nav-number">2.2.</span> <span class="nav-text">位置参数的无信息先验</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#尺度参数的无信息先验"><span class="nav-number">2.3.</span> <span class="nav-text">尺度参数的无信息先验</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Jeffreys先验分布"><span class="nav-number">2.4.</span> <span class="nav-text">Jeffreys先验分布</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多层先验分布"><span class="nav-number">3.</span> <span class="nav-text">多层先验分布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可信域"><span class="nav-number">4.</span> <span class="nav-text">可信域</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#重要抽样方法"><span class="nav-number">1.</span> <span class="nav-text">重要抽样方法</span></a></li></ol></div>
             
           </div>
         </section>
