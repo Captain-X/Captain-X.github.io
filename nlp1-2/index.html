@@ -92,7 +92,7 @@ We have an (infinite)">
 <meta property="og:site_name" content="Vinci">
 <meta property="og:description" content="Language modeling problemWe have some finite vocabulary, which includes all of the words in our language of interest, say $\mathcal V=$ {the, a, man, telescope, Beckham, two, …}
 We have an (infinite)">
-<meta property="og:updated_time" content="2018-01-23T12:03:53.842Z">
+<meta property="og:updated_time" content="2018-01-23T14:34:55.990Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Language Modeling">
 <meta name="twitter:description" content="Language modeling problemWe have some finite vocabulary, which includes all of the words in our language of interest, say $\mathcal V=$ {the, a, man, telescope, Beckham, two, …}
@@ -325,7 +325,19 @@ We have an (infinite)">
 <p>Speech recognition was the original motivation. Related problems are optical character recognition, handwriting recognition. The estimation techniques developed for this problem will be VERY useful for other problems in NLP.</p>
 <p>From acoustic point of view, “recognize speech” and “wreck a nice beach” are quite similar. If we simply look at a measure of how compatible this sentence is with the acoustics sentence, it’s quite possible we might confuse these two sentences. In practice, there are many other possibilities which might have a reasonable degree of fit with the acoustic input and might be quite confusable with the true sentence. If we have a language model, we can actually evaluate a probability of each of these sentences. And a language model adds some very useful information to this whole process, which is the fact that the sentence, recognize speech, is probably more probable than the sentence wreck a nice beach. In practice, modern speech recognizers use two sources of information. Firstly, they have some way of evaluating how well each of these sentences match the input from an acoustic point of view. But secondly, they also have a language model which gives a essentially prior probability over the different sentences in the language. It can be very useful in getting rid of this kind of confusions.</p>
 <h4 id="A-naive-method"><a href="#A-naive-method" class="headerlink" title="A naive method"></a>A naive method</h4><p>We have $N$ training sentences. For any sentence $x_1\cdots x_n$, $c(x_1\cdots x_n)$ is the number of times the sentence is seen in our training data. A naive estimate is<br>$$<br>p(x1\cdots x_n)=\frac{c(x1\cdots x_n)}{N}<br>$$<br>But it has some very clear deficiencies. Most importantly, it will assign probability 0 to any sentence not seen in our training sample. And we know that we’re continuously seeing new sentences in a language. So, this model has no ability to generalize to new sentences. The most important question is essentially, how can we build models to improve upon this naive estimate and in particular, models which generalize well to new test sentences.</p>
-<h3 id="Trigram-models"><a href="#Trigram-models" class="headerlink" title="Trigram models"></a>Trigram models</h3><h3 id="Perplexity"><a href="#Perplexity" class="headerlink" title="Perplexity"></a>Perplexity</h3><h3 id="Estimation-Techniques"><a href="#Estimation-Techniques" class="headerlink" title="Estimation Techniques"></a>Estimation Techniques</h3>
+<h3 id="Markov-Processes"><a href="#Markov-Processes" class="headerlink" title="Markov Processes"></a>Markov Processes</h3><p>Consider a sequence of random variables $X_1,X_2,\cdots,X_n$. Each random variable can take any value in a finite set $\mathcal V$. For now we assume the length $n$ is fixed (e.g., n = 100).</p>
+<h4 id="First-Order-Markov-Process"><a href="#First-Order-Markov-Process" class="headerlink" title="First-Order Markov Process"></a>First-Order Markov Process</h4><p>$$<br>\begin{align}<br>&amp;P(X_1 = x_1,X_2 = x_2,\cdots,X_n = x_n)\\<br>=&amp;P(X_1=x_1)\prod^n_{i=2}P(X_i=x_i|X_1=x_1,\cdots,X_{i-1}=x_{i-1})\\<br>=&amp;P(X_1=x_1)\prod^n_{i=2}P(X_i=x_i|X_{i-1}=x_{i-1})<br>\end{align}\\<br>\text{The first-order Markov assumption: For any }i\in\{2,\cdots, n\}\text{, for any } x_1,\cdots,x_n,\\<br>P(X_i=x_i|X_1=x_1,\cdots,X_{i-1}=x_{i-1})=P(X_i=x_i|X_{i-1}=x_{i-1})<br>$$</p>
+<h4 id="Second-Order-Markov-Process"><a href="#Second-Order-Markov-Process" class="headerlink" title="Second-Order Markov Process"></a>Second-Order Markov Process</h4><p>$$</p>
+<p>\begin{align}<br>&amp;P(X_1 = x_1,X_2 = x_2,\cdots,X_n = x_n)\\<br>=&amp;P(X_1=x_1)P(X_2=x_2|X_1=x_1)\prod^n_{i=3}P(X_i=x_i|X_{i-2}=x_{i-2},X_{i-1}=x_{i-1})\\<br>=&amp;\prod^n_{i=1}P(X_i=x_i|X_{i-2}=x_{i-2},X_{i-1}=x_{i-1})<br>\end{align}\\<br>\text{For convenience we assume } x_0=x_{-1}=\text{_, where _ is a special “start” symbol.}\\<br>\text{(assumption: }P(X_i=x_i|X_1=x_1,\cdots,X_{i-1}=x_{i-1})=P(X_i=x_i|X_{i-2}=x_{i-2},X_{i-1}=x_{i-1})\text{)}</p>
+<p>$$</p>
+<p>We would like the length of the sequence, $n$, to be a random variable. A simple solution is to always define $X_n $= STOP, where STOP is a special symbol. The intuition is at each point, we’re generating some symbol, $X_i,$ and if we ever generate STOP, we immediately terminate the process.</p>
+<h3 id="Trigram-Language-models"><a href="#Trigram-Language-models" class="headerlink" title="Trigram Language models"></a>Trigram Language models</h3><p>Each sequence of three words is called a trigram.</p>
+<p>A trigram language model consists of:</p>
+<ol>
+<li>a finite set $\mathcal V$</li>
+<li>a set of parameters $q(w|u,v)$ for each trigram $u,v,w$ such that $w\in\mathcal V\cup\{\text{STOP}\}$, and $u,v\in\mathcal V\cup\{\text*\}$ </li>
+</ol>
+<h3 id="Perplexity"><a href="#Perplexity" class="headerlink" title="Perplexity"></a>Perplexity</h3>
       
     </div>
 
@@ -364,8 +376,8 @@ We have an (infinite)">
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/nlp1-3/" rel="prev" title="Language Modeling">
-                Language Modeling <i class="fa fa-chevron-right"></i>
+              <a href="/nlp1-3/" rel="prev" title="Parameter Estimation in Language Models">
+                Parameter Estimation in Language Models <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -434,7 +446,7 @@ We have an (infinite)">
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -505,7 +517,7 @@ We have an (infinite)">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Language-modeling-problem"><span class="nav-number">1.</span> <span class="nav-text">Language modeling problem</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#A-naive-method"><span class="nav-number">1.1.</span> <span class="nav-text">A naive method</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Trigram-models"><span class="nav-number">2.</span> <span class="nav-text">Trigram models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Perplexity"><span class="nav-number">3.</span> <span class="nav-text">Perplexity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Estimation-Techniques"><span class="nav-number">4.</span> <span class="nav-text">Estimation Techniques</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Language-modeling-problem"><span class="nav-number">1.</span> <span class="nav-text">Language modeling problem</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#A-naive-method"><span class="nav-number">1.1.</span> <span class="nav-text">A naive method</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Markov-Processes"><span class="nav-number">2.</span> <span class="nav-text">Markov Processes</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#First-Order-Markov-Process"><span class="nav-number">2.1.</span> <span class="nav-text">First-Order Markov Process</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Second-Order-Markov-Process"><span class="nav-number">2.2.</span> <span class="nav-text">Second-Order Markov Process</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Trigram-Language-models"><span class="nav-number">3.</span> <span class="nav-text">Trigram Language models</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Perplexity"><span class="nav-number">4.</span> <span class="nav-text">Perplexity</span></a></li></ol></div>
             
           </div>
         </section>

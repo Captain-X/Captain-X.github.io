@@ -255,8 +255,121 @@
             
               
                 
+                <a class="post-title-link" href="/nlp2-2/" itemprop="url">
+                  Hidden Markov Models
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2018-01-23T09:34:04-05:00" content="2018-01-23">
+              2018-01-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/NLP/" itemprop="url" rel="index">
+                    <span itemprop="name">NLP</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>### </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/nlp2-1/" itemprop="url">
-                  Language Modeling
+                  The tagging problem
                 </a>
               
             
@@ -318,7 +431,8 @@
       
         
           
-            <h3 id="Language-modeling-problem"><a href="#Language-modeling-problem" class="headerlink" title="Language modeling problem"></a>Language modeling problem</h3><h3 id="Trigram-models"><a href="#Trigram-models" class="headerlink" title="Trigram models"></a>Trigram models</h3><h3 id="Perplexity"><a href="#Perplexity" class="headerlink" title="Perplexity"></a>Perplexity</h3><h3 id="Estimation-Techniques"><a href="#Estimation-Techniques" class="headerlink" title="Estimation Techniques"></a>Estimation Techniques</h3>
+            <p>### </p>
+
           
         
       
@@ -368,7 +482,7 @@
               
                 
                 <a class="post-title-link" href="/nlp1-3/" itemprop="url">
-                  Language Modeling
+                  Parameter Estimation in Language Models
                 </a>
               
             
@@ -430,7 +544,7 @@
       
         
           
-            <h3 id="Language-modeling-problem"><a href="#Language-modeling-problem" class="headerlink" title="Language modeling problem"></a>Language modeling problem</h3><h3 id="Trigram-models"><a href="#Trigram-models" class="headerlink" title="Trigram models"></a>Trigram models</h3><h3 id="Perplexity"><a href="#Perplexity" class="headerlink" title="Perplexity"></a>Perplexity</h3><h3 id="Estimation-Techniques"><a href="#Estimation-Techniques" class="headerlink" title="Estimation Techniques"></a>Estimation Techniques</h3>
+            <h3 id="Discounting-methods"><a href="#Discounting-methods" class="headerlink" title="Discounting methods"></a>Discounting methods</h3>
           
         
       
@@ -549,7 +663,19 @@
 <p>Speech recognition was the original motivation. Related problems are optical character recognition, handwriting recognition. The estimation techniques developed for this problem will be VERY useful for other problems in NLP.</p>
 <p>From acoustic point of view, “recognize speech” and “wreck a nice beach” are quite similar. If we simply look at a measure of how compatible this sentence is with the acoustics sentence, it’s quite possible we might confuse these two sentences. In practice, there are many other possibilities which might have a reasonable degree of fit with the acoustic input and might be quite confusable with the true sentence. If we have a language model, we can actually evaluate a probability of each of these sentences. And a language model adds some very useful information to this whole process, which is the fact that the sentence, recognize speech, is probably more probable than the sentence wreck a nice beach. In practice, modern speech recognizers use two sources of information. Firstly, they have some way of evaluating how well each of these sentences match the input from an acoustic point of view. But secondly, they also have a language model which gives a essentially prior probability over the different sentences in the language. It can be very useful in getting rid of this kind of confusions.</p>
 <h4 id="A-naive-method"><a href="#A-naive-method" class="headerlink" title="A naive method"></a>A naive method</h4><p>We have $N$ training sentences. For any sentence $x_1\cdots x_n$, $c(x_1\cdots x_n)$ is the number of times the sentence is seen in our training data. A naive estimate is<br>$$<br>p(x1\cdots x_n)=\frac{c(x1\cdots x_n)}{N}<br>$$<br>But it has some very clear deficiencies. Most importantly, it will assign probability 0 to any sentence not seen in our training sample. And we know that we’re continuously seeing new sentences in a language. So, this model has no ability to generalize to new sentences. The most important question is essentially, how can we build models to improve upon this naive estimate and in particular, models which generalize well to new test sentences.</p>
-<h3 id="Trigram-models"><a href="#Trigram-models" class="headerlink" title="Trigram models"></a>Trigram models</h3><h3 id="Perplexity"><a href="#Perplexity" class="headerlink" title="Perplexity"></a>Perplexity</h3><h3 id="Estimation-Techniques"><a href="#Estimation-Techniques" class="headerlink" title="Estimation Techniques"></a>Estimation Techniques</h3>
+<h3 id="Markov-Processes"><a href="#Markov-Processes" class="headerlink" title="Markov Processes"></a>Markov Processes</h3><p>Consider a sequence of random variables $X_1,X_2,\cdots,X_n$. Each random variable can take any value in a finite set $\mathcal V$. For now we assume the length $n$ is fixed (e.g., n = 100).</p>
+<h4 id="First-Order-Markov-Process"><a href="#First-Order-Markov-Process" class="headerlink" title="First-Order Markov Process"></a>First-Order Markov Process</h4><p>$$<br>\begin{align}<br>&amp;P(X_1 = x_1,X_2 = x_2,\cdots,X_n = x_n)\\<br>=&amp;P(X_1=x_1)\prod^n_{i=2}P(X_i=x_i|X_1=x_1,\cdots,X_{i-1}=x_{i-1})\\<br>=&amp;P(X_1=x_1)\prod^n_{i=2}P(X_i=x_i|X_{i-1}=x_{i-1})<br>\end{align}\\<br>\text{The first-order Markov assumption: For any }i\in\{2,\cdots, n\}\text{, for any } x_1,\cdots,x_n,\\<br>P(X_i=x_i|X_1=x_1,\cdots,X_{i-1}=x_{i-1})=P(X_i=x_i|X_{i-1}=x_{i-1})<br>$$</p>
+<h4 id="Second-Order-Markov-Process"><a href="#Second-Order-Markov-Process" class="headerlink" title="Second-Order Markov Process"></a>Second-Order Markov Process</h4><p>$$</p>
+<p>\begin{align}<br>&amp;P(X_1 = x_1,X_2 = x_2,\cdots,X_n = x_n)\\<br>=&amp;P(X_1=x_1)P(X_2=x_2|X_1=x_1)\prod^n_{i=3}P(X_i=x_i|X_{i-2}=x_{i-2},X_{i-1}=x_{i-1})\\<br>=&amp;\prod^n_{i=1}P(X_i=x_i|X_{i-2}=x_{i-2},X_{i-1}=x_{i-1})<br>\end{align}\\<br>\text{For convenience we assume } x_0=x_{-1}=\text{_, where _ is a special “start” symbol.}\\<br>\text{(assumption: }P(X_i=x_i|X_1=x_1,\cdots,X_{i-1}=x_{i-1})=P(X_i=x_i|X_{i-2}=x_{i-2},X_{i-1}=x_{i-1})\text{)}</p>
+<p>$$</p>
+<p>We would like the length of the sequence, $n$, to be a random variable. A simple solution is to always define $X_n $= STOP, where STOP is a special symbol. The intuition is at each point, we’re generating some symbol, $X_i,$ and if we ever generate STOP, we immediately terminate the process.</p>
+<h3 id="Trigram-Language-models"><a href="#Trigram-Language-models" class="headerlink" title="Trigram Language models"></a>Trigram Language models</h3><p>Each sequence of three words is called a trigram.</p>
+<p>A trigram language model consists of:</p>
+<ol>
+<li>a finite set $\mathcal V$</li>
+<li>a set of parameters $q(w|u,v)$ for each trigram $u,v,w$ such that $w\in\mathcal V\cup\{\text{STOP}\}$, and $u,v\in\mathcal V\cup\{\text*\}$ </li>
+</ol>
+<h3 id="Perplexity"><a href="#Perplexity" class="headerlink" title="Perplexity"></a>Perplexity</h3>
           
         
       
@@ -1405,139 +1531,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/5.1_2/" itemprop="url">
-                  统计决策理论
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2018-01-04T03:42:35-05:00" content="2018-01-04">
-              2018-01-04
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Bayesian-Analysis/" itemprop="url" rel="index">
-                    <span itemprop="name">Bayesian Analysis</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>决策问题的三个要素：状态集$\Theta=\{\theta\}$，行动集$\Delta=\{a\}$和收益函数$Q=(\theta,a)$，为了更好地做出决策，可以利用先验信息和样本信息。利用样本信息的决策问题称为统计决策问题，如果还利用先验信息，就称为Bayes决策问题。统计决策问题的三个基本要素是可控参数统计结构，行动空间和损失函数。</p>
-<h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p>$$<br>L(\theta,a)=\lambda(\theta)\cdot g(|a-\theta|)<br>$$</p>
-<p>其中$\lambda(\theta)&gt;0$，且有限，它反映决策中，由于$\theta$的不同，即使同一个偏差$|a-\theta|$造成的危害性常常不一样。$g$是非降函数。</p>
-<ol>
-<li><p>加权平方损失函数<br>$$<br>L(\theta,a)=\lambda(\theta)\cdot (a-\theta)^2<br>$$<br>常选用平方损失函数的原因是二次函数是$g$在零点展开成Taylor级数的近似，也因为与最小二乘法形式相似，便于计算，但是失真之处在于不是上有界，致使损失随偏差按平方率增大直至无穷。</p>
-</li>
-<li><p>线性损失函数<br>$$<br>L(\theta,a) =<br>\begin{cases}<br>K_0(\theta-a),  &amp; a\le\theta\\<br>K_1(a-\theta), &amp; a&gt;\theta<br>\end{cases}<br>$$<br>$K_0, K_1$为常数，反映行动$a$低于或高于状态$\theta$的相对重要性。</p>
-</li>
-<li><p>0-1损失函数<br>$$<br>L(\theta,a) =<br>\begin{cases}<br>0,  &amp; |a-\theta|\le\epsilon \\<br>1, &amp; |a-\theta|&gt;\epsilon<br>\end{cases}<br>$$<br>常在两行动决策问题中使用。</p>
-</li>
-<li><p>多元二次损失函数<br>$$<br>L(\boldsymbol{\theta},\boldsymbol{a})=(\boldsymbol{a}-\boldsymbol{\theta})’\boldsymbol{A}(\boldsymbol{a}-\boldsymbol{\theta})<br>$$<br>$\boldsymbol{\theta}’=(\theta_1,\cdots,\theta_p), \boldsymbol{a}’=(a_1,\cdots,a_p)$，$\boldsymbol{A}$为$p\times p$阶正定矩阵。当$\boldsymbol{A}$为对角阵，等于$\text{diag}(w_1,\cdots,w_p)$时，$p$元损失函数为<br>$$<br>L(\boldsymbol{\theta},\boldsymbol{a})=\sum^p_{i=1}w_i(a_i-\theta_i)^2<br>$$</p>
-</li>
-</ol>
-<h3 id="决策函数"><a href="#决策函数" class="headerlink" title="决策函数"></a>决策函数</h3><p>在一个统计决策问题中，从样本空间到行动空间的一个可测映照$\delta(x)$成为（非随机化）决策函数，非随机化是指样本一旦确定，所采取的行动也唯一确定，再无任何随机性可言。</p>
-<h3 id="风险函数"><a href="#风险函数" class="headerlink" title="风险函数"></a>风险函数</h3><p>风险就是平均损失，是损失函数$L(\theta,\delta(X))$关于样本$X$的分布$p_\theta(x)$的数学期望。<br>$$<br>R(\theta,\delta)=E_{X|\theta}[L(\theta,\delta(X))]=\int_\mathscr X L(\theta,\delta(x))p_\theta(x) \rm d\mu<br>$$</p>
-<h3 id="最小最大估计"><a href="#最小最大估计" class="headerlink" title="最小最大估计"></a>最小最大估计</h3><p>在样本空间$\mathscr X$到行动空间$\Delta$上的一切决策函数构成的决策函数类$\mathscr D$中寻找一致最优决策函数往往不能奏效，只能在其中一个特定子类$\mathscr D_1\subset \mathscr D$才有可能找到一致最优决策函数，或者扩大到随机化决策函数类中才能寻得一致最优决策函数。假如我们不是全面对风险函数进行逐点比较，而只对风险函数某一侧面进行比较，选出在这一侧面上最优的决策函数，这就形成了众多的统计决策准则，其中尤以最小最大准则和Bayes风险准则最常用和最有意义。</p>
-<p>Minimax准则是对$\mathscr D$中每个决策函数算出其最大风险值，再在所有最大风险值中选取相对最小值。它是预防最大风险值出现的一种稳妥保守的策略（e.g. 买保险）。<br>$$<br>\sup_{\theta\in\Theta} R(\theta,\delta\text{*}(x))=\inf_{\delta(x)\in\mathscr D} \sup_{\theta\in\Theta}R(\theta,\delta(x))<br>$$<br>例. 设$X$是正态总体$\mathcal N(\theta,1)$抽取的容量为1的样本，寻找$\theta$的估计。若取平方损失，则$\mathscr D_1=\{\delta_c:\delta_c(X)=cX,c\in R\}$中任一个估计的风险函数为<br>$$<br>R(\theta,\delta_c)=E_{x|\theta}(cX-\theta)^2=E_{x|\theta}[c(X-\theta)+(c-1)\theta]^2=c^2+(c-1)^2\theta^2<br>$$<br>当$c\ge1$时，$\delta_1(X)=X$是最优，但当$c&lt;1$时，诸风险函数呈交叉状态，故对诸风险函数逐点比较在$\mathscr D_1$中没有一致最小风险估计，但它们的最大风险可以算出<br>$$<br>\sup_{\theta\in R}R(\theta,\delta_c)=\sup_{\theta\in R}[c^2+(c-1)^2\theta^2]=<br>\begin{cases}<br>1, &amp; c=1\\<br>\infty , &amp; c\ne 1<br>\end{cases}<br>$$<br>按最小最大准则，$\delta_1(X)=X$是$\theta$在$\mathscr D_1$中的最小最大估计，其最小最大风险为1。</p>
-<h3 id="随机化决策函数"><a href="#随机化决策函数" class="headerlink" title="随机化决策函数"></a>随机化决策函数</h3><p>有时即使样本的观察值$x$给定，还有必要以某种随机方式在$\Delta$中选取决策行动才能改善决策效果。若把非随机决策函数$\delta(x)$看作一次抽样，随机化决策函数$\delta(D|x )$可看作二次抽样：先在样本空间$\mathscr X$中按照总体分布$p_\theta(x)$随机抽取一个样本$x_0$，与此同时就确定了一个条件分布$\delta(D|x_0 )$；再在行动空间中按条件分布$\delta(D|x_0 )$抽取一个行动，用此行动对自然界的状态或参数做出判断。随机化决策函数在实际中很少被采用，因为把行动的最后决策留给某种随机化方法来决定对于当今的决策者是难以接受的，但是在遇到聪明的对手时，随机化决策是最好的方法。</p>
-<p>按随机化决策函数确定的行动具有二重随机性，要作二次平均才能确定损失函数和风险函数。<br>$$<br>\bar L(\theta,\delta)=E_{a|x}[L(\theta,a)]=\int_\Delta L(\theta,a)\delta(\text{d} a|x)\\<br>R(\theta,\delta)=E_{x|\theta}\{E_{a|x}[L(\theta,a)]\}=\int_\mathscr X\left\{\int_\Delta L(\theta,a)\delta(\text{d} a|x)\right\}p_\theta(x)\text{d}x<br>$$<br>例. $X\sim P(\lambda),$其中$\lambda\in\{1,2\}.$ 根据一次试验结果 $x$，构造两个非随机化决策函数<br>$$<br>\delta_1(x)=<br>\begin{cases}<br>\lambda_1 &amp;x=0\\<br>\lambda_2 &amp; x=1,2,\cdots<br>\end{cases}\quad<br>\delta_2(x)=<br>\begin{cases}<br>\lambda_1 &amp;x=0,1\\<br>\lambda_2 &amp; x=2,3,\cdots<br>\end{cases}\\<br>\text{取损失矩阵如下}<br>L=<br>\begin{bmatrix}<br>0&amp;50\\<br>100&amp;0<br>\end{bmatrix}<br>$$<br>$R(\lambda_1,\delta_1)=50\cdot P_{\lambda_1}(x&gt;0)=50\times0.6321=31.61,R(\lambda_2,\delta_1)=100\cdot P_{\lambda_2}(x=0)=100\times0.1353=13.53$</p>
-<p>$R(\lambda_1,\delta_2)=50\cdot P_{\lambda_1}(x&gt;1)=50\times0.2642=13.21,R(\lambda_2,\delta_2)=100\cdot P_{\lambda_2}(x\le1)=100\times0.4060=40.60$</p>
-<p>每个估计量$\delta_j$在$\lambda_1$和$\lambda_2$各有一个风险值，记为$y_1$和$y_2$，把$y_1$和$y_2$看作平面直角坐标系的两个坐标，那么任一估计量就对应平面第一象限中的一点。我们把随机化估计增加到估计类$\mathscr D_1$中去，先考虑一种特殊形式$\delta\text_$，它在样本$x$给定条件下以概率$p$取$\delta_1(x)$，以概率$1-p$取$\delta_2(x)$，所以有$\delta\text_(0)=\lambda_1$，$\delta\text_(2)=\delta\text_(3)=\cdots=\lambda_2$，而$\delta\text_(1)$是一个随机变量，以概率$1-p$取$\lambda_1$，以概率$p$取$\lambda_2$.<br>$$<br>\begin{align}<br>R(\lambda_i,\delta\text_) &amp;=\sum_x\bar L(\lambda_i,\delta\text*(x))P_{\lambda_i}(x)\\<br>&amp;=\sum_x[ L(\lambda_i,\delta_1(x))p+L(\lambda_i,\delta_2(x))(1-p)]P_{\lambda_i}(x)\\<br>&amp;=\sum_x L(\lambda_i,\delta_1)P_{\lambda_i}(x)p+\sum_x L(\lambda_i,\delta_2)P_{\lambda_i}(x)(1-p)\\<br>&amp;=R(\lambda_i,\delta_1)p+R(\lambda_i,\delta_2)(1-p)<br>\end{align}<br>$$<br>由此看出，这种随机化估计量$\delta\text*(x)$对应的点是在$\delta_1(x)$和$\delta_2(x)$的连线上。直线$y_1=y_2$与这条连线的交点即是此决策函数类中的最小最大估计，最小最大风险为24.28，优于原非随机化决策函数。<br>$$<br>31.6p+13.5(1-p)=13.2p+40.6(1-p)\\<br>p=0.6<br>$$<br>这个估计仅在$x=1$时是随机的，其他样本条件下都是非随机的。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1583,7 +1576,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
