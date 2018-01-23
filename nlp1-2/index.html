@@ -92,7 +92,7 @@ We have an (infinite)">
 <meta property="og:site_name" content="Vinci">
 <meta property="og:description" content="Language modeling problemWe have some finite vocabulary, which includes all of the words in our language of interest, say $\mathcal V=$ {the, a, man, telescope, Beckham, two, …}
 We have an (infinite)">
-<meta property="og:updated_time" content="2018-01-23T11:42:28.873Z">
+<meta property="og:updated_time" content="2018-01-23T11:47:23.862Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Language Modeling">
 <meta name="twitter:description" content="Language modeling problemWe have some finite vocabulary, which includes all of the words in our language of interest, say $\mathcal V=$ {the, a, man, telescope, Beckham, two, …}
@@ -319,19 +319,9 @@ We have an (infinite)">
 
       
         <h3 id="Language-modeling-problem"><a href="#Language-modeling-problem" class="headerlink" title="Language modeling problem"></a>Language modeling problem</h3><p>We have some finite vocabulary, which includes all of the words in our language of interest, say $\mathcal V=$ {the, a, man, telescope, Beckham, two, …}</p>
-<p>We have an (infinite) set of strings, $\mathcal V^\dagger$. A sentence could have any sequence of words, such as</p>
-<p>the STOP<br>a STOP</p>
-<p>the fan STOP</p>
-<p>the fan saw Beckham STOP</p>
-<p>the fan saw saw STOP</p>
-<p>the fan saw Beckham play for Real Madrid STOP</p>
-<p>STOP</p>
+<p>We have an (infinite) set of strings, $\mathcal V^\dagger$. A sentence could have any sequence of words, such as<br>the STOP<br>a STOP<br>the fan STOP<br>the fan saw Beckham STOP<br>the fan saw saw STOP<br>the fan saw Beckham play for Real Madrid STOP<br>STOP</p>
 <p><strong>Given a training sample of example sentences, we need to learn a probability distribution.</strong></p>
-<p>$p(\text{the STOP})=10^{-12}$</p>
-<p>$p(\text{the fan STOP})=10^{-8}$</p>
-<p>$p(\text{the fan saw Beckham STOP})=2\times10^{-8}$</p>
-<p>$p(\text{the fan saw saw STOP})=10^{-15}$</p>
-<p>$p(\text{the fan saw Beckham play for Real Madrid STOP})=2\times10^{-9}$</p>
+<p>$p(\text{the STOP})=10^{-12}$<br>$p(\text{the fan STOP})=10^{-8}$<br>$p(\text{the fan saw Beckham STOP})=2\times10^{-8}$<br>$p(\text{the fan saw saw STOP})=10^{-15}$<br>$p(\text{the fan saw Beckham play for Real Madrid STOP})=2\times10^{-9}$</p>
 <p>Speech recognition was the original motivation. Related problems are optical character recognition,<br>handwriting recognition. The estimation techniques developed for this problem will be VERY useful for other problems in NLP.</p>
 <p>From acoustic point of view, “recognize speech” and “wreck a nice beach” are quite similar. If we simply look at a measure of how compatible this sentence is with the acoustics sentence, it’s quitepossible you might confuse these two sentences. In practice, there are many other possibilities which might have a reasonable degree of fit with the acoustic input and might be quite confusable with the true sentence. If we have a language model, we can actually evaluate a probability of each of these sentences. And a language model adds some very useful information to this whole process, which is the fact that the sentence, recognize speech, is probably more probable than the sentence wreck a nice beach.</p>
 <h3 id="Trigram-models"><a href="#Trigram-models" class="headerlink" title="Trigram models"></a>Trigram models</h3><h3 id="Perplexity"><a href="#Perplexity" class="headerlink" title="Perplexity"></a>Perplexity</h3><h3 id="Estimation-Techniques"><a href="#Estimation-Techniques" class="headerlink" title="Estimation Techniques"></a>Estimation Techniques</h3>
