@@ -85,24 +85,18 @@
 
 
 <meta name="description" content="Bayes估计无信息先验分布Bayes假设Bayes假设是把$\theta$取值范围上的均匀分布取作$\theta$的先验分布，这是十分自然的想法，但是也会遇到一些麻烦。
-一个问题是当$\Theta$为无穷区间时，无法定义一个正常的先验分布，广义先验分布。
-另一个麻烦是Bayes假设不满足变换下的不变性
-位置参数的无信息先验尺度参数的无信息先验Jeffreys先验分布多层先验分布当所给定先验分布中">
+一个问题是当$\Theta$为无穷区间时，无法定义一个正常的先验分布，例如对于正态总体$\mathcal N(\theta,1),\theta\in(-\infty,\infty)$，样本容量为1，取先验$\pi(\theta)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Bayes分析">
 <meta property="og:url" content="https://Captain-X.github.io/5.5/index.html">
 <meta property="og:site_name" content="Vinci">
 <meta property="og:description" content="Bayes估计无信息先验分布Bayes假设Bayes假设是把$\theta$取值范围上的均匀分布取作$\theta$的先验分布，这是十分自然的想法，但是也会遇到一些麻烦。
-一个问题是当$\Theta$为无穷区间时，无法定义一个正常的先验分布，广义先验分布。
-另一个麻烦是Bayes假设不满足变换下的不变性
-位置参数的无信息先验尺度参数的无信息先验Jeffreys先验分布多层先验分布当所给定先验分布中">
-<meta property="og:updated_time" content="2018-01-10T18:16:20.950Z">
+一个问题是当$\Theta$为无穷区间时，无法定义一个正常的先验分布，例如对于正态总体$\mathcal N(\theta,1),\theta\in(-\infty,\infty)$，样本容量为1，取先验$\pi(\theta)">
+<meta property="og:updated_time" content="2018-01-11T09:56:12.269Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Bayes分析">
 <meta name="twitter:description" content="Bayes估计无信息先验分布Bayes假设Bayes假设是把$\theta$取值范围上的均匀分布取作$\theta$的先验分布，这是十分自然的想法，但是也会遇到一些麻烦。
-一个问题是当$\Theta$为无穷区间时，无法定义一个正常的先验分布，广义先验分布。
-另一个麻烦是Bayes假设不满足变换下的不变性
-位置参数的无信息先验尺度参数的无信息先验Jeffreys先验分布多层先验分布当所给定先验分布中">
+一个问题是当$\Theta$为无穷区间时，无法定义一个正常的先验分布，例如对于正态总体$\mathcal N(\theta,1),\theta\in(-\infty,\infty)$，样本容量为1，取先验$\pi(\theta)">
 
 
 
@@ -325,9 +319,11 @@
 
       
         <h3 id="Bayes估计"><a href="#Bayes估计" class="headerlink" title="Bayes估计"></a>Bayes估计</h3><h3 id="无信息先验分布"><a href="#无信息先验分布" class="headerlink" title="无信息先验分布"></a>无信息先验分布</h3><h4 id="Bayes假设"><a href="#Bayes假设" class="headerlink" title="Bayes假设"></a>Bayes假设</h4><p>Bayes假设是把$\theta$取值范围上的均匀分布取作$\theta$的先验分布，这是十分自然的想法，但是也会遇到一些麻烦。</p>
-<p>一个问题是当$\Theta$为无穷区间时，无法定义一个正常的先验分布，广义先验分布。</p>
-<p>另一个麻烦是Bayes假设不满足变换下的不变性</p>
-<h4 id="位置参数的无信息先验"><a href="#位置参数的无信息先验" class="headerlink" title="位置参数的无信息先验"></a>位置参数的无信息先验</h4><h4 id="尺度参数的无信息先验"><a href="#尺度参数的无信息先验" class="headerlink" title="尺度参数的无信息先验"></a>尺度参数的无信息先验</h4><h4 id="Jeffreys先验分布"><a href="#Jeffreys先验分布" class="headerlink" title="Jeffreys先验分布"></a>Jeffreys先验分布</h4><h3 id="多层先验分布"><a href="#多层先验分布" class="headerlink" title="多层先验分布"></a>多层先验分布</h3><p>当所给定先验分布中超参数难于确定时，可以对超参数再给出一个先验，第二个先验称为超先验。</p>
+<p>一个问题是当$\Theta$为无穷区间时，无法定义一个正常的先验分布，例如对于正态总体$\mathcal N(\theta,1),\theta\in(-\infty,\infty)$，样本容量为1，取先验$\pi(\theta)=c$，有$\int_\Theta\pi(\theta)\text d \theta=\infty$，但是求得的后验分布为$\mathcal N(x,1)$。这种能得到是正常密度函数的后验分布的不正常先验分布称为广义先验分布。此例中的常数$c$的选择实际上不重要，一般取为1，并称这个先验分布为实数集上的均匀分布。</p>
+<p>另一个麻烦是Bayes假设不满足变换下的不变性。譬如正态总体中的方差$\sigma^2$和标准差$\sigma$都在$(0,\infty)$上取值。若$\sigma$的先验分布为$\pi(\sigma)=c$，$\eta=\sigma^2$的分布应为$\pi(\sqrt\eta)/(2\sqrt \eta)=2c\sqrt\eta$，那么$\eta=\sigma^2$的无信息先验密度与$\eta^{-\frac{1}{2}}$成比例，这与Bayes假设是矛盾的。这个矛盾说明不能随意设定一个常数为某参数的无信息先验分布，无信息先验分布的选取和参数在总体分布中的地位很有关系。</p>
+<h4 id="位置参数的无信息先验"><a href="#位置参数的无信息先验" class="headerlink" title="位置参数的无信息先验"></a>位置参数的无信息先验</h4><p>设总体$X$的密度函数具有形式$p(x-\theta)$，其样本空间和参数空间均为实数集，这类密度函数组成位置参数族，$\theta$称为位置参数。让$X$移动一个常数量得到$Y=X+c$，同时$\eta=\theta+c$，$Y$的密度为$p(y-\eta)$，它仍然是位置参数族的成员，因此</p>
+<h4 id="尺度参数的无信息先验"><a href="#尺度参数的无信息先验" class="headerlink" title="尺度参数的无信息先验"></a>尺度参数的无信息先验</h4><p>设总体$X$的密度函数具有形式$\frac{1}{\sigma}p(\frac{x}{\sigma})$，其参数空间为正实数集，这类密度函数组成尺度参数族，$\sigma$称为尺度参数。</p>
+<h4 id="Jeffreys先验分布"><a href="#Jeffreys先验分布" class="headerlink" title="Jeffreys先验分布"></a>Jeffreys先验分布</h4><h3 id="多层先验分布"><a href="#多层先验分布" class="headerlink" title="多层先验分布"></a>多层先验分布</h3><p>当所给定先验分布中超参数难于确定时，可以对超参数再给出一个先验，第二个先验称为超先验。</p>
 <p>例. </p>
 <h3 id="可信域"><a href="#可信域" class="headerlink" title="可信域"></a>可信域</h3>
       
@@ -438,7 +434,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
@@ -446,7 +442,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">categories</span>
               </a>
             </div>
@@ -455,7 +451,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
