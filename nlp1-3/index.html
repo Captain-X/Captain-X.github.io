@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="Discounting methods">
+<meta name="description" content="Linear InterpolationTrigram maximum likehood estimate has relatively low bias but needs very large dataset to accurately estimate.$$q_{ML}(w_i|w_{i-2},w_{i-1})=\frac{\text{Count}(w_{i-2},w_{i-1},w_i)}">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Parameter Estimation in Language Models">
 <meta property="og:url" content="https://Captain-X.github.io/nlp1-3/index.html">
 <meta property="og:site_name" content="Vinci">
-<meta property="og:description" content="Discounting methods">
-<meta property="og:updated_time" content="2018-01-23T14:31:22.333Z">
+<meta property="og:description" content="Linear InterpolationTrigram maximum likehood estimate has relatively low bias but needs very large dataset to accurately estimate.$$q_{ML}(w_i|w_{i-2},w_{i-1})=\frac{\text{Count}(w_{i-2},w_{i-1},w_i)}">
+<meta property="og:updated_time" content="2018-01-23T17:59:28.840Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Parameter Estimation in Language Models">
-<meta name="twitter:description" content="Discounting methods">
+<meta name="twitter:description" content="Linear InterpolationTrigram maximum likehood estimate has relatively low bias but needs very large dataset to accurately estimate.$$q_{ML}(w_i|w_{i-2},w_{i-1})=\frac{\text{Count}(w_{i-2},w_{i-1},w_i)}">
 
 
 
@@ -315,7 +315,10 @@
       
 
       
-        <h3 id="Discounting-methods"><a href="#Discounting-methods" class="headerlink" title="Discounting methods"></a>Discounting methods</h3>
+        <h3 id="Linear-Interpolation"><a href="#Linear-Interpolation" class="headerlink" title="Linear Interpolation"></a>Linear Interpolation</h3><p>Trigram maximum likehood estimate has relatively low bias but needs very large dataset to accurately estimate.<br>$$<br>q_{ML}(w_i|w_{i-2},w_{i-1})=\frac{\text{Count}(w_{i-2},w_{i-1},w_i)}{\text{Count}(w_{i-2},w_{i-1})}<br>$$<br>Linear interpolation comes up with an estimate that takes into account the maximum likelihood estimates at the trigram, bigram and unigram levels, and brings 3 additional parameters $\lambda_1, \lambda_2, \lambda_3$.<br>$$<br>q(w_i|w_{i-2},w_{i-1})=\lambda_1\times q_{ML}(w_i|w_{i-2},w_{i-1})+\lambda_2\times q_{ML}(w_i|w_{i-1})+\lambda_3\times q_{ML}(w_i)\\<br>\text{where }\lambda_1+\lambda_2+ \lambda_3=1, \text{and }\lambda_i\ge0 \text{ so that}\sum_{w\in\mathcal V’}q(w|u,v)=1\text{ and }q(w|u,v)\ge0<br>$$<br>How to estimate $\lambda$?</p>
+<p>We first hold out part of training set as validation data, then define $c’(w_1,w_2,w_2)$ to be the number of times the trigram $(w_1,w_2,w_3)$ is seen in validation set, choose $\lambda_1,\lambda_2,\lambda_3$ to maximize:<br>$$<br>L(\lambda_1,\lambda_2,\lambda_3)=\sum_{(w_1,w_2,w_3)}c’(w_1,w_2,w_3)\log q(w_3|w_1,w_2)<br>$$<br>Allowing $\lambda$ to vary</p>
+<p>We take a function $\Pi$ that partitions histories. This means for different ranges of $\text{Count}(w_{i-2},w_{i-1})$, we should find different sets of $\lambda$’s. For example, when $\text{Count}(w_{i-2},w_{i-1})=0$, $\lambda_1^1$should be equal to 0 because the trigram estimate is undefined.<br>$$<br>\Pi(w_{i-2},w_{i-1})=<br>\begin{cases}<br>1, \text{Count}(w_{i-2},w_{i-1})=0\\<br>2,1\le\text{Count}(w_{i-2},w_{i-1})\le2\\<br>3,3\le\text{Count}(w_{i-2},w_{i-1})\le5\\<br>4,\text{otherwise}\\<br>\end{cases}<br>\\<br>q(w_i|w_{i-2},w_{i-1})=\lambda_1^{\Pi(w_{i-2},w_{i-1})}\times q_{ML}(w_i|w_{i-2},w_{i-1})+\lambda_2^{\Pi(w_{i-2},w_{i-1})}\times q_{ML}(w_i|w_{i-1})+\lambda_3^{\Pi(w_{i-2},w_{i-1})}\times q_{ML}(w_i)\\<br>\text{where }\lambda_1^{\Pi(w_{i-2},w_{i-1})}+\lambda_2^{\Pi(w_{i-2},w_{i-1})}+ \lambda_3^{\Pi(w_{i-2},w_{i-1})}=1, \text{and }\lambda_i\ge0<br>$$</p>
+<h3 id="Discounting-methods"><a href="#Discounting-methods" class="headerlink" title="Discounting methods"></a>Discounting methods</h3>
       
     </div>
 
@@ -495,7 +498,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Discounting-methods"><span class="nav-number">1.</span> <span class="nav-text">Discounting methods</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Linear-Interpolation"><span class="nav-number">1.</span> <span class="nav-text">Linear Interpolation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Discounting-methods"><span class="nav-number">2.</span> <span class="nav-text">Discounting methods</span></a></li></ol></div>
             
           </div>
         </section>
