@@ -544,9 +544,13 @@
       
         
           
-            <h3 id="The-tagging-problem"><a href="#The-tagging-problem" class="headerlink" title="The tagging problem"></a>The tagging problem</h3><p>Part-of-Speech tagging takes the sentence as input and to word by word assign a part of speech to each word in that input. Ambiguity is the main challenge because a word can serve as different parts of speech.</p>
+            <p>###The tagging problem</p>
+<p>Part-of-Speech tagging takes the sentence as input and to word by word assign a part of speech to each word in that input. Ambiguity is the main challenge because a word can serve as different parts of speech.</p>
 <p>Named entity recognition takes sentences as input and marks up all the entities in that sentence in the output.<br><img src="..\img\nlp\named_entity.png"></p>
 <p>Our goal is to induce from the training set a function/algorithm that maps new sentences to their tag sequences. There are two types of constraints. “Local”: e.g., <i>can</i> is more likely to be a modal verb MD<br>rather than a noun NN. “Contextual”: e.g., a noun is much more likely than a verb to follow a determiner<br>But sometimes these preferences are in conflict: <i>The trash can is in the garage</i>.</p>
+<h3 id="Supervised-learning-problems"><a href="#Supervised-learning-problems" class="headerlink" title="Supervised learning problems"></a>Supervised learning problems</h3><p>Conditional models:<br>Learn a distribution $p(y|x)$ from training examples<br>For any test input $x$, define $f(x) = \operatorname{argmax}_y p(y|x)$</p>
+<p>Generative models:<br>Learn a distribution $p(x,y)$ from training examples<br>Often we have $p(x,y) = p(y)p(x|y)$. ($p(y)$:prior,$p(x|y)$: conditional generative model)<br>Output $f(x)=\operatorname{argmax}_y p(y)p(x|y)$<br>$$<br>\begin{align}<br>f(x) &amp;= \operatorname{argmax}_y p(y|x)\\<br>&amp;=\operatorname{argmax}_y \frac{p(y)p(x|y)}{p(x)}\\<br>&amp;=\operatorname{argmax}_y p(y)p(x|y)<br>\end{align}<br>$$<br>$p(y|x)$ directly: discriminate models</p>
+<p>$p(x,y)$: generative models</p>
 
           
         
