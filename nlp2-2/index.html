@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="Basic definitionsParameter estimation###The Viterbi algorithm">
+<meta name="description" content="Basic definitionsWe have an input sentence $x=x_1,x_2,\cdots,x_n$, and a tag sequence $y=y_1,y_2,\cdots,y_n$. We use an Hidden Markov Model to define a joint probability $p(x_1,x_2,\cdots,x_n,y_1,y_2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hidden Markov Model Taggers">
 <meta property="og:url" content="https://Captain-X.github.io/nlp2-2/index.html">
 <meta property="og:site_name" content="Vinci">
-<meta property="og:description" content="Basic definitionsParameter estimation###The Viterbi algorithm">
-<meta property="og:updated_time" content="2018-01-24T12:35:09.799Z">
+<meta property="og:description" content="Basic definitionsWe have an input sentence $x=x_1,x_2,\cdots,x_n$, and a tag sequence $y=y_1,y_2,\cdots,y_n$. We use an Hidden Markov Model to define a joint probability $p(x_1,x_2,\cdots,x_n,y_1,y_2">
+<meta property="og:updated_time" content="2018-01-24T14:18:16.812Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hidden Markov Model Taggers">
-<meta name="twitter:description" content="Basic definitionsParameter estimation###The Viterbi algorithm">
+<meta name="twitter:description" content="Basic definitionsWe have an input sentence $x=x_1,x_2,\cdots,x_n$, and a tag sequence $y=y_1,y_2,\cdots,y_n$. We use an Hidden Markov Model to define a joint probability $p(x_1,x_2,\cdots,x_n,y_1,y_2">
 
 
 
@@ -315,7 +315,10 @@
       
 
       
-        <h3 id="Basic-definitions"><a href="#Basic-definitions" class="headerlink" title="Basic definitions"></a>Basic definitions</h3><h3 id="Parameter-estimation"><a href="#Parameter-estimation" class="headerlink" title="Parameter estimation"></a>Parameter estimation</h3><p>###The Viterbi algorithm</p>
+        <h3 id="Basic-definitions"><a href="#Basic-definitions" class="headerlink" title="Basic definitions"></a>Basic definitions</h3><p>We have an input sentence $x=x_1,x_2,\cdots,x_n$, and a tag sequence $y=y_1,y_2,\cdots,y_n$. We use an Hidden Markov Model to define a joint probability $p(x_1,x_2,\cdots,x_n,y_1,y_2,\cdots,y_n)$ for any sentence $x_1,x_2,\cdots,x_n$ and tag sequence $y_1,y_2,\cdots,y_n$ of the same length. Then the most likely tag sequence for $x$ is $\operatorname{argmax}_{y_1\cdots y_n}p(x_1\cdots x_n,y_1\cdots y_n)$</p>
+<h4 id="Trigram-Hidden-Markov-Models"><a href="#Trigram-Hidden-Markov-Models" class="headerlink" title="Trigram Hidden Markov Models"></a>Trigram Hidden Markov Models</h4><p>We define $\mathcal V$ is the set of all possible vocabulary, and $\mathcal S$ is the set of all possible tags ($|\mathcal S|\approx50$). For any sentence $x_1\cdots x_n$ where $x_i\in\mathcal V$ , and any tag sequence $y_1\cdots y_{n+1}$ where $y_i\in \mathcal S$ and $y_{n+1}=\text{STOP}$, the joint probability of the sentence and tag sequence is<br>$$<br>p(x_1\cdots x_n,y_1\cdots y_{n+1})=\prod_{i=1}^{n+1}q(y_i|y_{i-2},y_{i-1})\prod_{i=1}^ne(x_i|y_i)\\<br>$$<br>Parameters of the model:<br.>$q(s|u,v)$ for any $s\in\mathcal S\cup\{\text{STOP}\},u,v\in\mathcal S\cup\{*\}$<br>$e(x|s) $ for any $s\in\mathcal S,x\in\mathcal V$</br.></p>
+<p>An example</p>
+<h3 id="Parameter-estimation"><a href="#Parameter-estimation" class="headerlink" title="Parameter estimation"></a>Parameter estimation</h3><p>###The Viterbi algorithm</p>
 
       
     </div>
@@ -496,7 +499,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-definitions"><span class="nav-number">1.</span> <span class="nav-text">Basic definitions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameter-estimation"><span class="nav-number">2.</span> <span class="nav-text">Parameter estimation</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Basic-definitions"><span class="nav-number">1.</span> <span class="nav-text">Basic definitions</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Trigram-Hidden-Markov-Models"><span class="nav-number">1.1.</span> <span class="nav-text">Trigram Hidden Markov Models</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parameter-estimation"><span class="nav-number">2.</span> <span class="nav-text">Parameter estimation</span></a></li></ol></div>
             
           </div>
         </section>
