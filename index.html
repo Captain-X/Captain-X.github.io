@@ -255,8 +255,121 @@
             
               
                 
+                <a class="post-title-link" href="/nlp3-2/" itemprop="url">
+                  Probabilistic Context-Free Grammars
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2018-01-25T09:43:15-05:00" content="2018-01-25">
+              2018-01-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/NLP/" itemprop="url" rel="index">
+                    <span itemprop="name">NLP</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>### </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/nlp3-1/" itemprop="url">
-                  Parsing, and Context-Free Grammars
+                  Parsing and Context-Free Grammars
                 </a>
               
             
@@ -432,8 +545,9 @@
         
           
             <h3 id="Basic-definitions"><a href="#Basic-definitions" class="headerlink" title="Basic definitions"></a>Basic definitions</h3><p>We have an input sentence $x=x_1,x_2,\cdots,x_n$, and a tag sequence $y=y_1,y_2,\cdots,y_n$. We use an Hidden Markov Model to define a joint probability $p(x_1,x_2,\cdots,x_n,y_1,y_2,\cdots,y_n)$ for any sentence $x_1,x_2,\cdots,x_n$ and tag sequence $y_1,y_2,\cdots,y_n$ of the same length. Then the most likely tag sequence for $x$ is $\operatorname{argmax}_{y_1\cdots y_n}p(x_1\cdots x_n,y_1\cdots y_n)$</p>
-<h4 id="Trigram-Hidden-Markov-Models"><a href="#Trigram-Hidden-Markov-Models" class="headerlink" title="Trigram Hidden Markov Models"></a>Trigram Hidden Markov Models</h4><p>We define $\mathcal V$ is the set of all possible vocabulary, and $\mathcal S$ is the set of all possible tags ($|\mathcal S|\approx50$). For any sentence $x_1\cdots x_n$ where $x_i\in\mathcal V$ , and any tag sequence $y_1\cdots y_{n+1}$ where $y_i\in \mathcal S$ and $y_{n+1}=\text{STOP}$, the joint probability of the sentence and tag sequence is<br>$$<br>p(x_1\cdots x_n,y_1\cdots y_{n+1})=\prod_{i=1}^{n+1}q(y_i|y_{i-2},y_{i-1})\prod_{i=1}^ne(x_i|y_i)\\<br>$$<br>Parameters of the model:<br.>$q(s|u,v)$ for any $s\in\mathcal S\cup\{\text{STOP}\},u,v\in\mathcal S\cup\{*\}$<br>$e(x|s) $ for any $s\in\mathcal S,x\in\mathcal V$</br.></p>
-<p>An example</p>
+<h4 id="Trigram-Hidden-Markov-Models"><a href="#Trigram-Hidden-Markov-Models" class="headerlink" title="Trigram Hidden Markov Models"></a>Trigram Hidden Markov Models</h4><p>We define $\mathcal V$ is the set of all possible vocabulary, and $\mathcal S$ is the set of all possible tags ($|\mathcal S|\approx50$). For any sentence $x_1\cdots x_n$ where $x_i\in\mathcal V$ , and any tag sequence $y_1\cdots y_{n+1}$ where $y_i\in \mathcal S$ and $y_{n+1}=\text{STOP}$, the joint probability of the sentence and tag sequence is<br>$$<br>p(x_1\cdots x_n,y_1\cdots y_{n+1})=\prod_{i=1}^{n+1}q(y_i|y_{i-2},y_{i-1})\prod_{i=1}^ne(x_i|y_i)\\<br>$$<br>Parameters of the model:<br>$q(s|u,v)$ for any $s\in\mathcal S\cup\{\text{STOP}\},u,v\in\mathcal S\cup\{*\}$ (trigram parameter)<br>$e(x|s) $ for any $s\in\mathcal S,x\in\mathcal V$ (emission parameter)</p>
+<p><strong>An example</strong></p>
+<p>If we have $n=3$, $x_1\cdots x_3$ equal to the sentence <i>the dog laughs</i>, and $y_1\cdots y_4$ equal to the tag sequence $\text{D N V STOP}$, then<br>$$<br>p(x_1\cdots x_n,y_1\cdots y_{n+1})=q(D|_,_)q(N|*,D)q(V|D,N)q(STOP|N,V)e(\text{the}|D)e(\text{dog}|N)e(\text{laughs}|V)<br>$$</p>
 <h3 id="Parameter-estimation"><a href="#Parameter-estimation" class="headerlink" title="Parameter estimation"></a>Parameter estimation</h3><p>###The Viterbi algorithm</p>
 
           
@@ -1348,209 +1462,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/5.4/" itemprop="url">
-                  Bayes决策准则
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2018-01-08T12:03:18-05:00" content="2018-01-08">
-              2018-01-08
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Bayesian-Analysis/" itemprop="url" rel="index">
-                    <span itemprop="name">Bayesian Analysis</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="先验分布"><a href="#先验分布" class="headerlink" title="先验分布"></a>先验分布</h3><p>经典统计推断的主要依据是样本信息，来自于“新鲜的”从总体抽取出来的样本，而经验和历史资料也可以用于统计推断和统计决策，它们大多存在于抽样试验之前，称为先验信息。</p>
-<p>Bayes学派最基本的观点是：任一未知量$\theta$都可以看作随机变量，可用一个概率分布去描述，这个分布称为先验分布。如今经典学派已不反对这一观点，现在两派争论的焦点是如何利用各种先验信息合理地确定先验分布。先验分布切不可草率定下。</p>
-<p>当随机现象不能重复，无法用频率方法确定事件概率时，人们可以根据经验对该事件发生可能性给出个人信念。主观概率至少能使人们在频率方法不适用时也可谈论概率，使用统计方法。</p>
-<h3 id="Bayes风险准则"><a href="#Bayes风险准则" class="headerlink" title="Bayes风险准则"></a>Bayes风险准则</h3><p>Bayes风险是按先验分布算出来的平均风险<br>$$<br>R_\pi=\int_\Theta R(\theta,\delta)\pi(\theta)\text d\theta<br>$$<br>若在决策函数类$\mathscr D$中存在$\delta\text_(x)$，使得$R_\pi(\delta\text_)=\inf_{\delta\in \mathscr D}R_\pi(\delta)$，则称$\delta\text*(x)$为决策函数类$\mathscr D$在Bayes风险准则下的最优决策函数，简称为Bayes决策函数或Bayes解。Bayes决策函数是对于固定的先验分布而言的。</p>
-<h3 id="Bayes公式"><a href="#Bayes公式" class="headerlink" title="Bayes公式"></a>Bayes公式</h3><p>在经典统计中，依赖于参数$\theta$的密度函数记为$p(x;\theta)$或$p_\theta(x)$，表示不同的$\theta$对应不同的分布。Bayes学派认为密度函数是在随机变量$\theta$给定某个值时，$X$的条件密度函数，故应记为$p(x|\theta)$.从Bayes观点看，样本的产生要分两步进行，首先设想从先验分布$\pi(\theta)$中产生一个观察值$\theta$，然后再从条件分布$p(x|\theta)$产生样本观察值$x=(x_1,\cdots,x_n)$，这时样本$X$的联合条件密度函数为$p(x|\theta)=\prod_{i=1}^n p(x_i|\theta)$，这个联合分布综合了样本信息，称为似然函数。样本$X$与参数$\theta$的联合分布为$h(x,\theta)=p(x|\theta)\pi(\theta)$，把先验信息和样本信息都综合到一起了。为了对$\theta$作出统计决策，可把联合分布进行分解$h(x)=\pi(\theta|x)m(x)$，其中$m(x)=\int_\Theta h(x,\theta)\text d \theta$ $=\int_\Theta p(x|\theta)\pi(\theta)\text d \theta$是$x$的边际密度函数，<strong>它与$\theta$无关，或者说$m(x)$不含$\theta$的任何先验信息</strong>。</p>
-<p>$$<br>\pi(\theta|x)=\frac{h(x,\theta)}{m(x)}=\frac{p(x|\theta)\pi(\theta)}{\int_\Theta p(x|\theta)\pi(\theta)\text{d}\theta}<br>$$</p>
-<p>这个在样本给定下$\theta$的条件分布称为$\theta$的后验分布，它是在样本给定下集中了样本与先验中有关$\theta$的一s切信息，比先验分布更接近于实际情况。从总体获取样本$X$后，Bayes公式把人们对$\theta$的认识由$\pi(x)$<strong>调正</strong>到$\pi(\theta|x)$。<br>$$<br>\text{先验信息}\oplus\text{样本信息}\Rightarrow\text{后验信息}\\<br>\pi(\theta)\oplus p(x|\theta)\Rightarrow\pi(\theta|x)<br>$$<br>例. $P(A)=\theta$，为估计$\theta$做了$n$次独立观察，其中事件$A$出现的次数$X\sim b(n,\theta)$，似然函数为$p(x|\theta)=\binom{n}{x}\theta^x(1-\theta)^{n-x}$, $x=0,1,\cdots,n$. 假如在试验之前对$A$没有什么了解，说不上$\theta$的大小，建议使用Bayes假设：将$U(0,1)$作为$\theta$的先验分布。<br>$$<br>\pi(\theta)=1,0&lt;\theta&lt;1\\<br>h(x,\theta)=p(x|\theta)\pi(\theta)=\binom{n}{x}\theta^x(1-\theta)^{n-x},x=0,1,\cdots,n,0&lt;\theta&lt;1\\<br>m(x)=\int_0^1h(x,\theta)\text d\theta=\binom{n}{x}\frac{\Gamma(x+1)\Gamma(n-x+1)}{\Gamma(n+2)}\\<br>\pi(\theta|x)=\frac{h(x,\theta)}{m(x)}=\frac{\Gamma(n+2)}{\Gamma(x+1)\Gamma(n-x+1)}\cdot\theta^x(1-\theta)^{n-x},0&lt;\theta&lt;1\\<br>可见，\theta\sim Be(x+1,n-x+1)<br>$$</p>
-<div style="align: center"><br><img src="..\img\bayes.png"><br></div>
-
-<p>定理：在有充分统计量（如正态分布中的$\bar X$和$Q$）的场合，后验分布可通过充分统计量的分布求得。</p>
-<h3 id="共轭先验分布"><a href="#共轭先验分布" class="headerlink" title="共轭先验分布"></a>共轭先验分布</h3><p>在上例中，先验分布$U(0,1)$实际上是参数为(1,1)的Beta分布，而其后验分布也为Beta分布，这一现象并非偶然，假如把$\theta$的先验分布换成一个一般的Beta分布$Be(a,b)$，其中$a&gt;0,b&gt;0$，经过类似计算后得到后验分布仍然是Beta分布$Be(a+x,b+n-x)$. 在确定总体分布族和先验分布族的情况下，若对任意的总体分布和先验分布，都有后验分布在先验分布族内，称此先验分布族为该总体分布族的共轭分布族（关于某一参数）。共轭先验分布是对某一分布中的参数而言的，离开指定参数和其所在的分布谈论共轭先验分布是没有意义的。下表是一些常用的共轭先验分布。</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">总体分布</th>
-<th style="text-align:center">参数</th>
-<th style="text-align:center">共轭先验分布</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">二项分布</td>
-<td style="text-align:center">成功概率</td>
-<td style="text-align:center">Beta分布</td>
-</tr>
-<tr>
-<td style="text-align:center">泊松分布</td>
-<td style="text-align:center">均值</td>
-<td style="text-align:center">Gamma分布</td>
-</tr>
-<tr>
-<td style="text-align:center">指数分布</td>
-<td style="text-align:center">均值倒数</td>
-<td style="text-align:center">Gamma分布</td>
-</tr>
-<tr>
-<td style="text-align:center">正态分布（方差已知）</td>
-<td style="text-align:center">均值</td>
-<td style="text-align:center">正态分布</td>
-</tr>
-<tr>
-<td style="text-align:center">正态分布（均值已知）</td>
-<td style="text-align:center">方差</td>
-<td style="text-align:center">倒Gamma分布</td>
-</tr>
-</tbody>
-</table>
-<p>例. $X_1,X_2,\cdots,X_n$是来自于正态分布$\mathcal N(\theta,\sigma^2)$的一个样本，其中$\sigma^2$已知，此样本的联合密度函数为<br>$$<br>p(x|\theta)=\left(\frac{1}{\sqrt{2\pi}\sigma}\right)^n\exp\left\{-\frac{1}{2\sigma^2}\sum_{i=1}^n(x_i-\theta)^2\right\}<br>$$<br>现取另一正态分布$\mathcal N(\mu,\tau^2)$作为正态均值$\theta$的先验分布，<br>$$<br>\pi(\theta)=\frac{1}{\sqrt {2\pi}\tau}\exp \left\{-\frac{1}{2\tau^2}(\theta-\mu)^2\right\}\\<br>h(x,\theta)=K_1\exp\left\{-\frac{1}{2}[A\theta^2-2B\theta+C]\right\}=K_1\exp\left\{-\frac{(\theta-B/A)^2}{2/A}-\frac{1}{2}(C-B^2/A)\right\}\\<br>其中K_1=(2\pi)^{-(n+1)/2}\tau^{-1}\sigma^{-n},\sigma_0^=\frac{\sigma^2}{n},A=\frac{1}{\sigma_0^2}+\frac{1}{\tau^2},B=\frac{\bar x}{\sigma_0^2}+\frac{\mu}{\tau^2},C=\frac{\sum_{i=1}^n x_i^2}{\sigma^2}+\frac{\mu^2}{\tau^2}\\<br>m(x)=\int_{-\infty}^\infty h(x,\theta)\text d \theta=K_1\exp\left\{-\frac{1}{2}(C-B^2/A)\right\}\sqrt\frac{2\pi}{A}\\<br>\pi(\theta|x)=\sqrt\frac{A}{2\pi}\exp\left\{-\frac{(\theta-B/A)^2}{2/A}\right\}<br>$$<br>后验分布为$\mathcal N(\frac{B}{A},\frac{1}{A})$，均值$\displaystyle \mu_1=\frac{B}{A}=\frac{\bar x\sigma_0^{-2}+\mu\tau^{-2}}{\sigma_0^{-2}+\tau^{-2}}$，方差$\displaystyle \tau_1^2=\frac{1}{A}=(\sigma_0^{-2}+\tau^{-2})^{-1}$</p>
-<p>可以发现后验均值是先验均值和样本均值的加权平均$\mu_1=\lambda\mu+(1-\lambda)\bar x,\lambda=\tau^{-2}/(\sigma_0^{-2}+\tau^{-2})$，先验方差越小（先验分布越集中，对先验均值越确信），先验均值在后验均值中的比重越大，相反，若先验方差越大则先验均值的比重越小，当先验方差趋于无穷（先验分布为均匀分布）时，后验均值等于样本均值，这可以描述为采用无信息先验分布时，估计只利用了样本信息，实际上就等于通过样本算得的MLE或矩估计值。另一方面，当样本量$n$越大时，$\sigma_0^2=\sigma^2/n$越小，从而样本均值在后验均值中的比重越大，特别当$n$无限增大时，先验均值在后验均值中已是微不足道。</p>
-<h3 id="核"><a href="#核" class="headerlink" title="核"></a>核</h3><p>正态分布的密度函数可以表示为$p(x)\propto\exp\{-(x-\mu)^2/2\sigma^2\}$，正比于符号两侧只相差一个不依赖于密度函数的主元$x$的因子，利用分布的正则性，不难恢复这个因子。熟悉分布的核可以简化后验分布的计算，后验分布$\pi(\theta|x)$的核一定是$\theta$的函数，Bayes公式中的分母$m(x)$是与$\theta$无关的因子，可以略去，从而有$\pi(\theta|x)\propto p(x|\theta)\pi(\theta)$，还可以进一步用$p(x|\theta)$和$\pi(\theta)$的核代入简化运算。如在上例中：<br>$$<br>\begin{align}<br>\pi(\theta|x)&amp; \propto p(x|\theta)\pi(\theta)\\<br>&amp;\propto \exp\left\{-\frac{1}{2\sigma^2}\sum_{i=1}^n(x_i-\theta)^2\right\}\exp \left\{-\frac{1}{2\tau^2}(\theta-\mu)^2\right\}\\<br>&amp;\propto \exp\{-\frac{1}{2}[A\theta^2-2B\theta]\}\\<br>&amp;\propto \exp\{-\frac{A}{2}(\theta-B/A)^2\}<br>\end{align}<br>$$<br>可以看出后验分布为$\mathcal N(1/A,B/A)$.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">分布</th>
-<th style="text-align:center">核</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">$b(n,\theta)$</td>
-<td style="text-align:center">$\theta^x(1-\theta)^{n-x}$</td>
-</tr>
-<tr>
-<td style="text-align:center">$P(\lambda)$</td>
-<td style="text-align:center">$\lambda^xe^{-\lambda}$</td>
-</tr>
-<tr>
-<td style="text-align:center">$Be(a,b)$</td>
-<td style="text-align:center">$x^{a-1}(1-x)^{b-1}$</td>
-</tr>
-<tr>
-<td style="text-align:center">$Ga(a,\lambda)$</td>
-<td style="text-align:center">$x^{a-1}e^{-\lambda x}$</td>
-</tr>
-<tr>
-<td style="text-align:center">$N(\mu,\sigma^2)$</td>
-<td style="text-align:center">$\exp \{-(x-\mu)^2/2\sigma^2\}$</td>
-</tr>
-</tbody>
-</table>
-<p>又例. 二项分布中对成功概率$\theta$的估计。总体$X\sim b(n,\theta)$的核为$\theta^x(1-\theta)^{n-x}$，先验分布$Be(a,b)$的核为$\theta^{a-1}(1-\theta)^{b-1}$，后验分布$\pi(\theta|x)\propto\theta^{a+x-1}(1-\theta)^{b+n-x-1}$，这就是Beta分布$Be(a+x,b+n-x)$的核，均值先验均值和样本均值的加权和<br>$$<br>\frac{a+x}{a+b+n}=\frac{a+b}{a+b+n}\frac{a}{a+b}+\frac{n}{a+b+n}\frac{x}{n}<br>$$<br>先验分布中所含的参数称为超参数，下面以前面的共轭先验分布$Be(a,b)$为例讨论确定超参数的几个途径。</p>
-<p>1) 假如根据先验信息能获得成功概率的若干个观察值（一般是从历史数据整理加工获得的），可以通过矩估计法来确定两个参数。<br>$$<br>\begin{cases}<br>\displaystyle \frac{a}{a+b}=\bar \theta=\frac{1}{n}\sum_{i=1}^n\theta_i\\<br>\displaystyle\frac{ab}{(a+b)^2(a+b+1)}=S_\theta^2=\frac{1}{n-1}\sum_{i=1}^n(\theta_i-\bar \theta)^2<br>\end{cases}<br>$$<br>（这个地方的理解，在先验信息关键参数都未知的情况下，历史样本（还是可以理解为样本）用作确定先验信息而非当作样本信息。因为先验信息实在有限，看上去没有必要用Bayes估计。但是倘若用这些样本直接来估计未知量，只能得到一个估计值。若以Bayes学派的观点，未知量都应该看作随机变量，用概率分布描述，而利用先验信息中分布为Beta分布的信息用Bayes估计可以得到未知量的一个分布，更符合Bayes学派对未知量的理解。）</p>
-<p>2) 假如根据先验信息只能获得先验均值$\bar \theta$，令$\frac{a}{a+b}=\bar \theta$，一个方程无法确定两个参数，但是因为方差随$a+b$增大而减小，可以根据对先验均值的确信程度来确定$a+b$的值，如果很确信，则$a+b$可以取得大一点。</p>
-<p>3) 还可通过两个分位数利用数值积分求解$a,b$.</p>
-<p>4) 如果决策者对成功概率一无所知，则可使用Bayes假设，用$Be(1,1)$作为先验分布。</p>
-<h3 id="后验风险准则"><a href="#后验风险准则" class="headerlink" title="后验风险准则"></a>后验风险准则</h3><p>$\mathscr D$中任一个决策函数$\delta(x)$的损失函数对后验分布的数学期望称为后验风险<br>$$<br>R_\pi(\delta|x)=E_{\theta|x}[L(\theta,\delta(x))]=\int_\Theta L(\theta,\delta(x))\pi(\theta|x)\text d \theta<br>$$<br>$\delta\text*(x)$为该统计决策问题在后验风险准则下的最优决策函数，或者Bayes（后验型）决策函数，假如$R_\pi(\delta\text*|x)=\inf_{\delta\in\mathscr D}R_\pi(\delta|x)$.</p>
-<p>例. $X=(X_1,\cdots,X_n)$是来自正态总体$\mathcal N(\mu,1)$的一个样本，假如参数$\mu$的先验分布取为共轭先验分布$\mathcal N(0,\tau^2)$，其中$\tau$已知，损失函数取为0-1损失函数，求参数$\mu$的Bayes（后验型）估计。<br>$$<br>L(\mu,\delta)=<br>\begin{cases}<br>0,|\delta-\mu|\le\epsilon\\<br>1,|\delta-\mu|&gt;\epsilon<br>\end{cases}<br>$$</p>
-<p>$$<br>\begin{align}<br>\pi(\mu|x)&amp;\propto p(x|\mu)\pi(\mu)\\<br>&amp; \propto \exp\left\{-\frac{1}{2}[\sum_{i=1}^n (x_i-\mu)^2+\frac{\mu ^2}{\tau^2}]\right\}\\<br>&amp; \propto \exp\left\{-\frac{1}{2} (n+\tau^{-2})\mu^2+\sum_{i=1}^n x_i\mu\right\}\\<br>&amp; \propto \exp\left\{-\frac{1}{2}(n+\tau^{-2})(\mu-\frac{\sum_{i=1}^nx_i}{n+\tau^{-2}})^2\right\}<br>\end{align}\\<br>\quad\\<br>\mu\sim\mathcal N(\frac{\sum_{i=1}^nx_i}{n+\tau^{-2}},\frac{1}{n+\tau^{-2}})\\<br>R_\pi(\delta|x)=1-P(|\delta-\mu|\le\epsilon)<br>$$</p>
-<p>要在定长$2\epsilon$区间上概率最大，$\delta(x)$只能取后验分布的均值，即在此场合下，$\mu$的Bayes后验型估计为<br>$$<br>\delta_\tau(x)=\frac{\sum_{i=1}^n x_i}{n+\tau^{-2}}<br>$$<br>它与经典方法得到的估计$\bar X$是不同的，一般有$\delta_\tau(x)&lt;\bar X$，$\delta_\tau(x)$比$\bar X$更接近0，这是先验分布给我们带来一些信息之故（先验分布均值为0）. 只有当$\tau\rightarrow\infty$时，才有$\delta_\tau(x)\rightarrow\bar X$（相当于先验为Bayes假设，没有先验信息）.</p>
-<p>对给定的统计决策问题（包括先验分布的给定）和决策函数类$\mathscr D$，当Bayes风险存在有限取值时，<strong>Bayes决策函数$\delta\text{_}(x)$和Bayes（后验型）决策函数$\delta\text{_}\text{*}(x)$是等价的。</strong></p>
-<p>证明：<br>$$<br>R_\pi(\delta)=\int_\Theta R(\theta,\delta)\pi(\theta)\text d\theta=\int_\Theta\left\{\int_\mathscr X L(\theta,\delta)p(x|\theta)\text dx\right\}\pi(\theta)\text d\theta\\<br>R_\pi(\delta)=\int_\mathscr X\left\{\int_\Theta L(\theta,\delta)\pi(\theta|x)\text d\theta\right\}m(x)\text dx=\int_\mathscr X R_\pi(\delta|x)m(x)\text dx\\<br>\text{这表明Bayes风险是后验风险对边际分布的数学期望}\\<br>\begin{align}<br>R_\pi(\delta\text_)=\inf_{\delta\in\mathscr D}R_\pi(\delta)&amp;=\inf_{\delta\in\mathscr D}\int_\mathscr X R_\pi(\delta|x)m(x)\text dx\\<br>&amp;\ge\int_\mathscr X \inf_{\delta\in\mathscr D}R_\pi(\delta|x)m(x)\text dx\\<br>&amp;=\int_\mathscr X R_\pi(\delta\text_\text_|x)m(x)\text dx\\<br>&amp;=R_\pi(\delta\text_\text_)\\<br>又有R_\pi(\delta\text_\text_)&amp;\ge\inf_{\delta\in\mathscr D}R_\pi(\delta)=R_\pi(\delta\text_)\\<br>故R_\pi(\delta\text_\text_)&amp;=R_\pi(\delta\text_)\\<br>\end{align}\\<br>这表明使后验风险最小的决策函数\delta\text_\text_同时也使\text{Bayes}风险最小\\<br>另外，由R_\pi(\delta\text_\text_)=R_\pi(\delta\text_)可得\int_\mathscr X R_\pi(\delta\text_|x)m(x)\text dx=\int_\mathscr X R_\pi(\delta\text_\text_|x)m(x)\text dx\\<br>又R_\pi(\delta\text_\text_|x)= \inf_{\delta\in\mathscr D}R_\pi(\delta|x)\le R_\pi(\delta\text_|x)\\<br>所以R_\pi(\delta\text*|x)=R_\pi(\delta\text_\text_|x)\\<br>这表明\text{Bayes}风险最小的决策函数\delta\text*同时也使后验风险最小<br>$$<br>人们更常使用后验风险途径来寻找Bayes决策函数，因为它的计算相对简单和方便。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1596,7 +1507,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
