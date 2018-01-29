@@ -90,7 +90,7 @@
 <meta property="og:url" content="https://Captain-X.github.io/nlp2-2/index.html">
 <meta property="og:site_name" content="Vinci">
 <meta property="og:description" content="Basic definitionsWe have an input sentence $x=x_1,x_2,\cdots,x_n$, and a tag sequence $y=y_1,y_2,\cdots,y_n$. We use an Hidden Markov Model to define a joint probability $p(x_1,x_2,\cdots,x_n,y_1,y_2">
-<meta property="og:updated_time" content="2018-01-25T16:14:09.192Z">
+<meta property="og:updated_time" content="2018-01-29T13:11:06.067Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hidden Markov Model Taggers">
 <meta name="twitter:description" content="Basic definitionsWe have an input sentence $x=x_1,x_2,\cdots,x_n$, and a tag sequence $y=y_1,y_2,\cdots,y_n$. We use an Hidden Markov Model to define a joint probability $p(x_1,x_2,\cdots,x_n,y_1,y_2">
@@ -320,6 +320,11 @@
 <p><strong>An example</strong></p>
 <p>If we have $n=3$, $x_1\cdots x_3$ equal to the sentence <i>the dog laughs</i>, and $y_1\cdots y_4$ equal to the tag sequence $\text{D N V STOP}$, then<br>$$<br>p(x_1\cdots x_n,y_1\cdots y_{n+1})=q(D|_,_)q(N|*,D)q(V|D,N)q(STOP|N,V)e(\text{the}|D)e(\text{dog}|N)e(\text{laughs}|V)<br>$$</p>
 <h3 id="Parameter-estimation"><a href="#Parameter-estimation" class="headerlink" title="Parameter estimation"></a>Parameter estimation</h3><p>###The Viterbi algorithm</p>
+<p>How to use the trained model to predict test sentences?</p>
+<p>Problem: for a input $x_1\cdots x_n$, find $\arg\max_{y_1\cdots y_{n+1}}p(x_1\cdots x_n,y_1\cdots y_{n+1})$, where the $\arg \max$ is taken over all sequences $y_1\cdots y_{n+1}$ such that $y_i\in\mathcal S$ for $i=1,\cdots, n$ and $y_{n+1}=\text{STOP}$. We assume that $p$ takes the form below, where we have assumed in definition that $y_0=y_{-1}=*$, and $y_{n+1}=\text{STOP}$.</p>
+<p>$$<br>p(x_1\cdots x_n,y_1\cdots y_{n+1})=\prod_{i=1}^{i+1}q(y_i|y_{i-2},y_{i-1})\prod_{i=1}^ne(x_i|y_i)<br>$$<br>Brute Force Search is hopelessly inefficient because the number of possible sequence is $|\mathcal S|^n$. As the length of sentence increases, it would cost enormous time to calculate the joint probability for each tag sequence and return the maximum.</p>
+<p>###Pros and Cons</p>
+<p>Hidden Markov model taggers are very simple to train (just need to compile counts from the training corpus) and perform relatively well (over 90% performance on named entity recognition). The main difficulty is modeling $e(\text{word}|\text{tag})$, which can be very difficult if “words” are complex.</p>
 
       
     </div>
