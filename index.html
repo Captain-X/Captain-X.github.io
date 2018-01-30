@@ -255,6 +255,119 @@
             
               
                 
+                <a class="post-title-link" href="/nlp3-3/" itemprop="url">
+                  Probabilistic Context-Free Grammars
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2018-01-29T23:19:45-05:00" content="2018-01-29">
+              2018-01-29
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/NLP/" itemprop="url" rel="index">
+                    <span itemprop="name">NLP</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>### </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/nlp3-2/" itemprop="url">
                   Probabilistic Context-Free Grammars
                 </a>
@@ -548,12 +661,17 @@
 <h4 id="Trigram-Hidden-Markov-Models"><a href="#Trigram-Hidden-Markov-Models" class="headerlink" title="Trigram Hidden Markov Models"></a>Trigram Hidden Markov Models</h4><p>We define $\mathcal V$ is the set of all possible vocabulary, and $\mathcal S$ is the set of all possible tags ($|\mathcal S|\approx50$). For any sentence $x_1\cdots x_n$ where $x_i\in\mathcal V$ , and any tag sequence $y_1\cdots y_{n+1}$ where $y_i\in \mathcal S$ and $y_{n+1}=\text{STOP}$, the joint probability of the sentence and tag sequence is<br>$$<br>p(x_1\cdots x_n,y_1\cdots y_{n+1})=\prod_{i=1}^{n+1}q(y_i|y_{i-2},y_{i-1})\prod_{i=1}^ne(x_i|y_i)\\<br>$$<br>Parameters of the model:<br>$q(s|u,v)$ for any $s\in\mathcal S\cup\{\text{STOP}\},u,v\in\mathcal S\cup\{*\}$ (trigram parameter)<br>$e(x|s) $ for any $s\in\mathcal S,x\in\mathcal V$ (emission parameter)</p>
 <p><strong>An example</strong></p>
 <p>If we have $n=3$, $x_1\cdots x_3$ equal to the sentence <i>the dog laughs</i>, and $y_1\cdots y_4$ equal to the tag sequence $\text{D N V STOP}$, then<br>$$<br>p(x_1\cdots x_n,y_1\cdots y_{n+1})=q(D|_,_)q(N|*,D)q(V|D,N)q(STOP|N,V)e(\text{the}|D)e(\text{dog}|N)e(\text{laughs}|V)<br>$$</p>
-<h3 id="Parameter-estimation"><a href="#Parameter-estimation" class="headerlink" title="Parameter estimation"></a>Parameter estimation</h3><h3 id="The-Viterbi-Algorithm"><a href="#The-Viterbi-Algorithm" class="headerlink" title="The Viterbi Algorithm"></a>The Viterbi Algorithm</h3><p>How to use the trained model to predict test sentences?</p>
+<h3 id="Parameter-estimation"><a href="#Parameter-estimation" class="headerlink" title="Parameter estimation"></a>Parameter estimation</h3><p><strong>Smoothed Estimation</strong></p>
+<p>Linear Interpolation<br>$$<br>q(\text{Vt|Dt,JJ})=\lambda_1\times\frac{\text{Count(Dt,JJ,Vt)}}{\text{Count(Dt,JJ)}}+\lambda_2\times\frac{\text{Count(JJ,Vt)}}{\text{Count(JJ)}}+\lambda_3\times\frac{\text{Count(Vt)}}{\text{Count()}}\\<br>\lambda_1+\lambda_2+\lambda_3=1, and<br>$$</p>
+<p><strong>Dealing with Low-Frequency Words</strong></p>
+<p>Profits soared at Boeing Co. , easily topping forecasts on Wall Street , as their CEO Alan Mulally announced first quarter results .</p>
+<p>A common method is as follows:<br>Step 1: Split vocabulary into two sets<br>Frequent words = words occurring 5 times in training<br>Low frequency words = all other words<br>Step 2: Map low frequency words into a small, nite set,<br>depending on prexes, suxes etc.</p>
+<h3 id="The-Viterbi-Algorithm"><a href="#The-Viterbi-Algorithm" class="headerlink" title="The Viterbi Algorithm"></a>The Viterbi Algorithm</h3><p>How to use the trained model to predict test sentences?</p>
 <p><strong>Problem:</strong> for a input $x_1\cdots x_n$, find $\arg\max_{y_1\cdots y_{n+1}}p(x_1\cdots x_n,y_1\cdots y_{n+1})$, where the $\arg \max$ is taken over all sequences $y_1\cdots y_{n+1}$ such that $y_i\in\mathcal S$ for $i=1,\cdots, n$ and $y_{n+1}=\text{STOP}$. We assume that $p$ takes the form below, where we have assumed in definition that $y_0=y_{-1}=*$, and $y_{n+1}=\text{STOP}$.</p>
 <p>$$<br>p(x_1\cdots x_n,y_1\cdots y_{n+1})=\prod_{i=1}^{i+1}q(y_i|y_{i-2},y_{i-1})\prod_{i=1}^ne(x_i|y_i)<br>$$<br>Brute Force Search is hopelessly inefficient because the number of possible sequence is $|\mathcal S|^n$. As the length of sentence increases, it would cost enormous time to calculate the joint probability for every tag sequence and return the maximum.</p>
 <p>Define $n$ to be the length of the sentence; define $S_k$ for $k=-1,\cdots n$ tobe the set of possible tags at position $k$: $S_{-1}=S_0=\{*\},S_k=S$ for $k\in\{1\cdots n\}$. Define $r(y_{-1},y_0,y_1,\cdots,y_k)=\prod_{i=1}^kq(y_i|y_{i-2},y_{i-1})\prod_{i=1}^ke(x_i|y_i)$</p>
 <p>Define a dynamic programming table $\pi(k,u,v)=\max_{\langle y_{-1},y_0,y_1,\cdots,y_k\rangle:y_{k-1}=u,y_k=v}r(y_{-1},y_0,y_1,\cdots y_k)$. It is the maximum probability of a tag sequence ending in tags $u,v$ at position $k$. Base case: $\pi(0,_,_)=1$. </p>
-<p>Recursive definition:<br>$$<br>\pi(k,u,v)=\max_{w\in\mathcal S_{k-2}}\pi(k,w,u,v)=\max_{w\in\mathcal S_{k-2}} (\pi(k-1,w,u)\times q(v|w,u)\times e(x_k|v))<br>$$<br><strong>Input:</strong> a sentence $x_1\cdots x_n$, parameters $q(s|u,v)$ and $e(x|s)$.<br><strong>Initialization:</strong> set $\pi(0,_,_)=1$<br><strong>Definition:</strong> $S_{-1}=S_0=\{_\},S_k=S$ for $k\in\{1\cdots n\}$.<br>_*Algorithm:__<br>    For $k=1\cdots n$,<br>        For $u\in\mathcal S_{k-1},v\in\mathcal S_k,$<br>            $$\pi(k,u,v)=\max_{w\in\mathcal S_{k-2}} (\pi(k-1,w,u)\times q(v|w,u)\times e(x_k|v))$$<br>            $bp(k,u,v)=\arg\max_{w\in\mathcal S_{k-2}} (\pi(k-1,w,u)\times q(v|w,u)\times e(x_k|v))$<br>     Set $(y_{n-1},y_n)=\arg\max_{(u,v)}(\pi(n,u,v)\times q(\text{STOP|u,v}))$<br>    For $k=(n-2)\cdots1,y_k=bp(k+2,y_{k+1},y_{k+2})$<br>    Return $y_1\cdots y_n$</p>
+<p>Recursive definition:<br>$$<br>\pi(k,u,v)=\max_{w\in\mathcal S_{k-2}}\pi(k,w,u,v)=\max_{w\in\mathcal S_{k-2}} (\pi(k-1,w,u)\times q(v|w,u)\times e(x_k|v))<br>$$<br><strong>Input:</strong> a sentence $x_1\cdots x_n$, parameters $q(s|u,v)$ and $e(x|s)$.<br><strong>Initialization:</strong> set $\pi(0,_,_)=1$<br><strong>Definition:</strong> $S_{-1}=S_0=\{_\},S_k=S$ for $k\in\{1\cdots n\}$.<br>_*Algorithm:__<br>    For $k=1\cdots n$,<br>        For $u\in\mathcal S_{k-1},v\in\mathcal S_k,$<br>            record $$\pi(k,u,v)=\max_{w\in\mathcal S_{k-2}} (\pi(k-1,w,u)\times q(v|w,u)\times e(x_k|v))$$<br>            record $bp(k,u,v)=\arg\max_{w\in\mathcal S_{k-2}} (\pi(k-1,w,u)\times q(v|w,u)\times e(x_k|v))$<br>     Set $(y_{n-1},y_n)=\arg\max_{(u,v)}(\pi(n,u,v)\times q(\text{STOP|u,v}))$<br>    For $k=(n-2)\cdots1,y_k=bp(k+2,y_{k+1},y_{k+2})$<br>    Return $y_1\cdots y_n$</p>
 <p>Runninf time: $n|\mathcal S|^2$ entries in $\pi$ to be filled in. $O(|\mathcal S|)$ time to fill in one entry. $O(n|\mathcal S|^3)$ time in total.</p>
 <h3 id="Pros-and-Cons"><a href="#Pros-and-Cons" class="headerlink" title="Pros and Cons"></a>Pros and Cons</h3><p>Hidden Markov model taggers are very simple to train (just need to compile counts from the training corpus) and perform relatively well (over 90% performance on named entity recognition). The main difficulty is modeling $e(\text{word}|\text{tag})$, which can be very difficult if “words” are complex.</p>
 
@@ -1350,125 +1468,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/5.5/" itemprop="url">
-                  Bayes分析
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2018-01-08T12:03:37-05:00" content="2018-01-08">
-              2018-01-08
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Bayesian-Analysis/" itemprop="url" rel="index">
-                    <span itemprop="name">Bayesian Analysis</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Bayes估计"><a href="#Bayes估计" class="headerlink" title="Bayes估计"></a>Bayes估计</h3><h3 id="无信息先验分布"><a href="#无信息先验分布" class="headerlink" title="无信息先验分布"></a>无信息先验分布</h3><h4 id="Bayes假设"><a href="#Bayes假设" class="headerlink" title="Bayes假设"></a>Bayes假设</h4><p>Bayes假设是把$\theta$取值范围上的均匀分布取作$\theta$的先验分布，这是十分自然的想法，但是也会遇到一些麻烦。</p>
-<p>一个问题是当$\Theta$为无穷区间时，无法定义一个正常的先验分布，例如对于正态总体$\mathcal N(\theta,1),\theta\in(-\infty,\infty)$，样本容量为1，取先验$\pi(\theta)=c$，有$\int_\Theta\pi(\theta)\text d \theta=\infty$，但是求得的后验分布为$\mathcal N(x,1)$。这种能得到是正常密度函数的后验分布的不正常先验分布称为广义先验分布。此例中的常数$c$的选择实际上不重要，一般取为1，并称这个先验分布为实数集上的均匀分布。</p>
-<p>另一个麻烦是Bayes假设不满足变换下的不变性。譬如正态总体中的方差$\sigma^2$和标准差$\sigma$都在$(0,\infty)$上取值。若$\sigma$的先验分布为$\pi(\sigma)=c$，$\eta=\sigma^2$的分布应为$\pi(\sqrt\eta)/(2\sqrt \eta)=2c\sqrt\eta$，那么$\eta=\sigma^2$的无信息先验密度与$\eta^{-\frac{1}{2}}$成比例，这与Bayes假设是矛盾的。这个矛盾说明不能随意设定一个常数为某参数的无信息先验分布，无信息先验分布的选取和参数在总体分布中的地位很有关系。</p>
-<h4 id="位置参数的无信息先验"><a href="#位置参数的无信息先验" class="headerlink" title="位置参数的无信息先验"></a>位置参数的无信息先验</h4><p>设总体$X$的密度函数具有形式$p(x-\theta)$，其样本空间和参数空间均为实数集，这类密度函数组成位置参数族，$\theta$称为位置参数。让$X$移动一个常数量得到$Y=X+c$，同时$\eta=\theta+c$，$Y$的密度为$p(y-\eta)$，它仍然是位置参数族的成员，因此</p>
-<h4 id="尺度参数的无信息先验"><a href="#尺度参数的无信息先验" class="headerlink" title="尺度参数的无信息先验"></a>尺度参数的无信息先验</h4><p>设总体$X$的密度函数具有形式$\frac{1}{\sigma}p(\frac{x}{\sigma})$，其参数空间为正实数集，这类密度函数组成尺度参数族，$\sigma$称为尺度参数。</p>
-<h4 id="Jeffreys先验分布"><a href="#Jeffreys先验分布" class="headerlink" title="Jeffreys先验分布"></a>Jeffreys先验分布</h4><h3 id="多层先验分布"><a href="#多层先验分布" class="headerlink" title="多层先验分布"></a>多层先验分布</h3><p>当所给定先验分布中超参数难于确定时，可以对超参数再给出一个先验，第二个先验称为超先验。</p>
-<p>例. </p>
-<h3 id="可信域"><a href="#可信域" class="headerlink" title="可信域"></a>可信域</h3>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1514,7 +1513,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
