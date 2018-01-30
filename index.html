@@ -255,6 +255,118 @@
             
               
                 
+                <a class="post-title-link" href="/nlp7-1/" itemprop="url">
+                  Log-Linear Models
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2018-01-30T09:47:09-05:00" content="2018-01-30">
+              2018-01-30
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/NLP/" itemprop="url" rel="index">
+                    <span itemprop="name">NLP</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/nlp4-1/" itemprop="url">
                   Lexicalized PCFGs
                 </a>
@@ -559,6 +671,18 @@
 <p>We use parse tree to represent these deriviations. Different parse trees correspond to difference interpretations of the underlying sentence. In the first parse tree, the PP “in the car” is modifying the entire verb phrase “drove down the street” (by far the most likely interpretation), while in the second tree, it is modifying the noun phrase “the street” (which means the street is in the car).<br><img src="../img/nlp/deriviation2.png"><img src="../img/nlp/deriviation1.png"></p>
 <p>The problem with parsing—ambiguity: there are several possible syntactic structures for the sentence corresponding to various different interpretations, most of which are quite unlikely but all of which are nevertheless sytactically well formed.</p>
 <p>###A brief sketch of the syntax of English</p>
+<p>####Noun phrases</p>
+<p>(NN = singular noun, NNS = plural noun, NNP = proper noun, DT = determiner, JJ = adjective)<br>A fragment of noun phrase grammar<br><img src="../img/nlp/noun_phrase1.png"><br><img src="../img/nlp/noun_phrase2.png"></p>
+<p>####Prepositional phrases</p>
+<p>An extended grammar<br>(IN = preposition)<br><img src="../img/nlp/pp1.png"><br><img src="../img/nlp/pp2.png"></p>
+<h4 id="Verbs-verb-phrases-and-sentences"><a href="#Verbs-verb-phrases-and-sentences" class="headerlink" title="Verbs, verb phrases, and sentences"></a>Verbs, verb phrases, and sentences</h4><p>Basic Verb Types<br>$\qquad$Vi = Intransitive verb<br>$\qquad$Vt = Transitive verb<br>$\qquad$Vd = Ditransitive verb (give)<br>Basic VP Rules<br>$\qquad$VP $\rightarrow$ Vi<br>$\qquad$VP $\rightarrow$ Vt NP<br>$\qquad$VP $\rightarrow$ Vd NP NP (give the dog a ball)<br>Basic S Rule<br>$\qquad$S  $\rightarrow$ NP VP</p>
+<p>PPs Modifying Verb Phrases<br>$\qquad$VP $\rightarrow$ VP PP (gave the dog a ball on Wednesday)</p>
+<p>####Complementizers, and SBARs</p>
+<p>COMP = complementizer (e.g., that)<br>SBAR $\rightarrow$ COMP S</p>
+<p>New Verb Types<br>$\qquad$V[5] (e.g., said, reported)<br>$\qquad$V[6] (e.g., told, informed)<br>$\qquad$V[7] (e.g., bet)<br>New VP Rules<br>$\qquad$VP  $\rightarrow$  V[5] SBAR  (said that the man sleeps)<br>$\qquad$VP  $\rightarrow$  V[6] NP SBAR  (told the dog that the mechanic likes the pigeon)<br>$\qquad$VP  $\rightarrow$  V[7] NP NP SBAR  (bet the pigeon $50 that the mechanic owns a fast car)</p>
+<p>####Coordination</p>
+<p>A New Part-of-Speech:<br>$\qquad$CC = Coordinator (e.g., and, or, but)<br>New Rules<br>$\qquad$NP $\rightarrow$ NP CC NP<br>$\qquad$$\bar N$ $\rightarrow$ $\bar N$ CC $\bar N$<br>$\qquad$VP $\rightarrow$ VP CC VP<br>$\qquad$S $\rightarrow$ S CC S<br>$\qquad$SBAR $\rightarrow$ SBAR CC SBAR</p>
+<h4 id="Only-a-scratch-of-the-surface"><a href="#Only-a-scratch-of-the-surface" class="headerlink" title="Only a scratch of the surface!"></a>Only a scratch of the surface!</h4><p><strong>Agreement</strong>: The dogs laugh v.s. The dog laughs<br><strong>Wh-movement</strong>: The dog that the cat liked … (The direct object of like is the dog instead of …)<br><strong>Active v.s. passive</strong>: The dog saw the cat v.s. The cat was seen by the dog</p>
 <p>###Examples of ambiguous structures</p>
 
           
@@ -1368,118 +1492,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/6.1/" itemprop="url">
-                  随机数的产生
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2018-01-09T01:20:20-05:00" content="2018-01-09">
-              2018-01-09
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Statistical-Computation-Methods/" itemprop="url" rel="index">
-                    <span itemprop="name">Statistical Computation Methods</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="逆变换法"><a href="#逆变换法" class="headerlink" title="逆变换法"></a>逆变换法</h3><h3 id="合成法"><a href="#合成法" class="headerlink" title="合成法"></a>合成法</h3><h3 id="筛选法"><a href="#筛选法" class="headerlink" title="筛选法"></a>筛选法</h3>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1525,7 +1537,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
