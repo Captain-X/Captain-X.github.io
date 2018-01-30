@@ -105,7 +105,11 @@ The information conveyed by parse trees
 <meta property="og:image" content="https://Captain-X.github.io/../img/nlp/noun_phrase2.png">
 <meta property="og:image" content="https://Captain-X.github.io/../img/nlp/pp1.png">
 <meta property="og:image" content="https://Captain-X.github.io/../img/nlp/pp2.png">
-<meta property="og:updated_time" content="2018-01-30T16:05:15.693Z">
+<meta property="og:image" content="https://Captain-X.github.io/../img/nlp/part_ambiguity.png">
+<meta property="og:image" content="https://Captain-X.github.io/../img/nlp/deriviation2.png">
+<meta property="og:image" content="https://Captain-X.github.io/../img/nlp/deriviation1.png">
+<meta property="og:image" content="https://Captain-X.github.io/../img/nlp/noun_premodifier.png">
+<meta property="og:updated_time" content="2018-01-30T16:45:38.104Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Parsing and Context-Free Grammars">
 <meta name="twitter:description" content="###The parsing problem
@@ -362,6 +366,13 @@ The information conveyed by parse trees
 <p>A New Part-of-Speech:<br>$\qquad$CC = Coordinator (e.g., and, or, but)<br>New Rules<br>$\qquad$NP $\rightarrow$ NP CC NP<br>$\qquad$$\bar N$ $\rightarrow$ $\bar N$ CC $\bar N$<br>$\qquad$VP $\rightarrow$ VP CC VP<br>$\qquad$S $\rightarrow$ S CC S<br>$\qquad$SBAR $\rightarrow$ SBAR CC SBAR</p>
 <h4 id="Only-a-scratch-of-the-surface"><a href="#Only-a-scratch-of-the-surface" class="headerlink" title="Only a scratch of the surface!"></a>Only a scratch of the surface!</h4><p><strong>Agreement</strong>: The dogs laugh v.s. The dog laughs<br><strong>Wh-movement</strong>: The dog that the cat liked … (The direct object of like is the dog instead of …)<br><strong>Active v.s. passive</strong>: The dog saw the cat v.s. The cat was seen by the dog</p>
 <p>###Examples of ambiguous structures</p>
+<p>####Part-of-Speech ambiguity</p>
+<p>The word “duck” can serve as both NN and Vi. This kind of ambiguity frequently leads to multiple possible parse structures for a particular sentence.<br><img src="../img/nlp/part_ambiguity.png"></p>
+<p>####Prepositional phrase attachment</p>
+<p><img src="../img/nlp/deriviation2.png"><img src="../img/nlp/deriviation1.png"></p>
+<p>Another example: John was believed to have been shot by Bill, which can be interpreted as Bill shot John or Bill believe John has been shot. But the former is more plausible due to a strong preference for PP to modify the most recent verb.</p>
+<p>####Noun Premodifier</p>
+<p><img src="../img/nlp/noun_premodifier.png"><br>The JJ “fast” can modify “car” or “mechanic”. </p>
 
       
     </div>
