@@ -84,16 +84,24 @@
 
 
 
-<meta name="description" content="###">
+<meta name="description" content="###Probabilistic Context-Free Grammars (PCFGs)
+Under PCFG, each rule is assigned with a probability.
+Probability of a tree $t$ with rules $\alpha_1\rightarrow\beta_1,\alpha_2\rightarrow\beta_2,\cdots,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Probabilistic Context-Free Grammars">
 <meta property="og:url" content="https://Captain-X.github.io/nlp3-2/index.html">
 <meta property="og:site_name" content="Vinci">
-<meta property="og:description" content="###">
-<meta property="og:updated_time" content="2018-01-25T14:44:14.004Z">
+<meta property="og:description" content="###Probabilistic Context-Free Grammars (PCFGs)
+Under PCFG, each rule is assigned with a probability.
+Probability of a tree $t$ with rules $\alpha_1\rightarrow\beta_1,\alpha_2\rightarrow\beta_2,\cdots,">
+<meta property="og:image" content="https://Captain-X.github.io/../img/nlp/pcfg.png">
+<meta property="og:updated_time" content="2018-01-31T01:28:34.184Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Probabilistic Context-Free Grammars">
-<meta name="twitter:description" content="###">
+<meta name="twitter:description" content="###Probabilistic Context-Free Grammars (PCFGs)
+Under PCFG, each rule is assigned with a probability.
+Probability of a tree $t$ with rules $\alpha_1\rightarrow\beta_1,\alpha_2\rightarrow\beta_2,\cdots,">
+<meta name="twitter:image" content="https://Captain-X.github.io/../img/nlp/pcfg.png">
 
 
 
@@ -315,7 +323,16 @@
       
 
       
-        <p>### </p>
+        <p>###Probabilistic Context-Free Grammars (PCFGs)</p>
+<p>Under PCFG, each rule is assigned with a probability.<br><img src="../img/nlp/pcfg.png"></p>
+<p>Probability of a tree $t$ with rules $\alpha_1\rightarrow\beta_1,\alpha_2\rightarrow\beta_2,\cdots, \alpha_n\rightarrow\beta_n$ is $p(t)=\prod_{i=1}^n q(\alpha_1\rightarrow\beta_1)$. A PCFG assigns a probability to each left-most derivation, or parse-tree, allowed by the underlying CFG. Say we have a sentence $s$, set of derivations for that sentence is $\mathcal T(s)$. Then a PCFG assigns a probability $p(t)$ to each member of $\mathcal T(s)$. i.e., we now have a ranking in order of probability. The most likely parse tree for a sentence $s$ is $\arg \max_{t\in \mathcal T(s)} p(t)$.</p>
+<p>###The CKY Algorithm</p>
+<p>$$$$Chomsky Normal Form</p>
+<p>A context free grammar $G = (N,\Sigma,R,S)$ in Chomsky Normal Form is as follows</p>
+<p>I N is a set of non-terminal symbols<br>I  is a set of terminal symbols<br>I R is a set of rules which take one of two forms:<br>I X ! Y1Y2 for X 2 N, and Y1; Y2 2 N<br>I X ! Y for X 2 N, and Y 2 <br>I S 2 N is a distinguished start symbol</p>
+<p>###Weaknesses of PCFGs</p>
+<p>####Lack of sensitivity to lexical information</p>
+<p>####Lack of sensitivity to structural frequencies</p>
 
       
     </div>
