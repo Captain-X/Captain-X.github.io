@@ -255,6 +255,284 @@
             
               
                 
+                <a class="post-title-link" href="/nlp1-1/" itemprop="url">
+                  Introduction to NLP
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2018-01-23T03:33:16-05:00" content="2018-01-23">
+              2018-01-23
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/NLP/" itemprop="url" rel="index">
+                    <span itemprop="name">NLP</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="What-is-NLP"><a href="#What-is-NLP" class="headerlink" title="What is NLP"></a>What is NLP</h3><p>Computers using natural language as input and/or output</p>
+<div style="align: center"><br><img src="..\img\nlp\concept.png"><br></div>
+
+<h4 id="Key-applications"><a href="#Key-applications" class="headerlink" title="Key applications"></a>Key applications</h4><h5 id="Machine-Translation"><a href="#Machine-Translation" class="headerlink" title="Machine Translation"></a>Machine Translation</h5><p>The problem of mapping sentences in one language to sentences in another.</p>
+<h5 id="Information-Extraction"><a href="#Information-Extraction" class="headerlink" title="Information Extraction"></a>Information Extraction</h5><p>The problem in this case is to take some text as input and to produce some structured, basically a database<br>representation of some key content in this text.</p>
+<p>Goal: Map a document collection to a structured database</p>
+<p>Motivation:</p>
+<ul>
+<li><p>Complex searches (Find me all the jobs in advertising paying at least $50,000 in Boston)</p>
+<p>a search that is very difficult to formulate using a regular search engine</p>
+</li>
+</ul>
+<ul>
+<li>Statistical queries (How has the number of jobs in accounting changed over the years?)</li>
+</ul>
+<h5 id="Text-Summerization"><a href="#Text-Summerization" class="headerlink" title="Text Summerization"></a>Text Summerization</h5><p>The problem in this case is to take a single document or, potentially a group of several documents and to try to condense them down to a summary, which, in some sense, preserves the main information in those documents.</p>
+<h5 id="Dialogue-Systems"><a href="#Dialogue-Systems" class="headerlink" title="Dialogue Systems"></a>Dialogue Systems</h5><p>Systems where a human can actually interact with a computer to achieve some task.</p>
+<h4 id="Basic-Problems"><a href="#Basic-Problems" class="headerlink" title="Basic Problems"></a>Basic Problems</h4><h5 id="Tagging"><a href="#Tagging" class="headerlink" title="Tagging"></a>Tagging</h5><p>Abstractly, tagging problems take the following form. As input we have some sequence, in this case a sequence of letters and as output we are going to have a tagged sequence where each letter in the input now has an associated tag.</p>
+<p>a b e e a f h j $\Rightarrow$ a/C b/D e/C e/C a/D f/C h/D j/C</p>
+<ul>
+<li><p>Example 1: Part-of-speech tagging</p>
+<p>Profits/N soared/V at/P Boeing/N Co./N ,/, easily/ADV topping/V forecasts/N on/P Wall/N Street/N ./.</p>
+</li>
+<li><p>Example 2: Named Entity Recognition</p>
+<p>Profits/NA soared/NA at/NA Boeing/SC Co./CC,/NA easily/NA topping/NA forecasts/NA on/NA Wall/SL Street/CL ./. (SL: the start of a location; CL: the continuation of a location.)</p>
+</li>
+</ul>
+<h5 id="Parsing"><a href="#Parsing" class="headerlink" title="Parsing"></a>Parsing</h5><p>The problem is to map some sentences to some output, which is usually referred to as a parse tree. The parse tree essentially gives some hierarchical decomposition of a sentence, corresponding to its grammatical structure. Once we’ve recovered this kind of representations, we can, for example, recover basic grammatical relations.</p>
+<div style="align: center"><br><img src="..\img\nlp\parse_tree.png"><br></div>
+
+<h3 id="Why-is-NLP-hard"><a href="#Why-is-NLP-hard" class="headerlink" title="Why is NLP hard"></a>Why is NLP hard</h3><p>$$<br>\text{At last, a computer that understands you like your mother”}<br>$$</p>
+<p>Ambiguity </p>
+<ol>
+<li>(*) It understands you as well as your mother understands you</li>
+<li>It understands (that) you like your mother</li>
+<li>It understands you as well as it understands your mother</li>
+</ol>
+<h4 id="At-the-acoustic-level-speech-recognition"><a href="#At-the-acoustic-level-speech-recognition" class="headerlink" title="At the acoustic level (speech recognition):"></a>At the acoustic level (speech recognition):</h4><ol>
+<li>a computer that understands you <strong>like your</strong> mother</li>
+<li>a computer that understands you <strong>lie cured</strong> mother</li>
+</ol>
+<h4 id="At-the-syntactic-level"><a href="#At-the-syntactic-level" class="headerlink" title="At the syntactic level:"></a>At the syntactic level:</h4><div style="align: center"><br><img src="..\img\nlp\syntactic_ambi.png"><br></div>
+
+<p>Different structures lead to different interpretations.</p>
+<div style="align: center"><br><img src="..\img\nlp\syntactic_ambi2.png"><br></div>
+
+<h4 id="At-the-semantic-meaning-level"><a href="#At-the-semantic-meaning-level" class="headerlink" title="At the semantic (meaning) level:"></a>At the semantic (meaning) level:</h4><p>Two denitions of mother<br>a woman who has given birth to a child<br>a stringy slimy substance consisting of yeast cells and bacteria; is added to cider or wine to produce vinegar</p>
+<p>This is an instance of <strong>word sense ambiguity</strong> (They put money in the bank/ I saw her duck with a telescope)</p>
+<h4 id="At-the-discourse-multi-clause-level"><a href="#At-the-discourse-multi-clause-level" class="headerlink" title="At the discourse (multi-clause) level:"></a>At the discourse (multi-clause) level:</h4><p>$\text{Alice says they’ve built a computer that understands you like your mother. But she…}$</p>
+<ul>
+<li>doesn’t know any details (by far the most plausible interpretation is Alice)</li>
+<li>doesn’t understand me at all (your mother)</li>
+</ul>
+<p>This is an instance of <strong>anaphora</strong>, where she co-referees to some other discourse entity.</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/6.2/" itemprop="url">
+                  随机模拟计算
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2018-01-10T13:11:39-05:00" content="2018-01-10">
+              2018-01-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Statistical-Computation-Methods/" itemprop="url" rel="index">
+                    <span itemprop="name">Statistical Computation Methods</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="重要抽样方法"><a href="#重要抽样方法" class="headerlink" title="重要抽样方法"></a>重要抽样方法</h3>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/6.1/" itemprop="url">
                   随机数的产生
                 </a>
@@ -1155,7 +1433,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">posts</span>
             </a>
           </div>
