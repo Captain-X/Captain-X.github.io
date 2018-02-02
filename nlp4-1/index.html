@@ -94,7 +94,8 @@
 <meta property="og:image" content="https://Captain-X.github.io/../img/nlp/adding_headwords.png">
 <meta property="og:image" content="https://Captain-X.github.io/../img/nlp/lexicalized_tree.png">
 <meta property="og:image" content="https://Captain-X.github.io/../img/nlp/precision_recall.png">
-<meta property="og:updated_time" content="2018-02-02T16:26:32.350Z">
+<meta property="og:image" content="https://Captain-X.github.io/../img/nlp/dependency.png">
+<meta property="og:updated_time" content="2018-02-02T16:43:01.721Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Lexicalized PCFGs">
 <meta name="twitter:description" content="Lexicalization of a treebankThe first key idea is to add annotations specifying the head of each rule, which in some sence is an additional piece of information in our CFG. Each context-free rule has">
@@ -338,7 +339,7 @@
 <h3 id="Evaluation"><a href="#Evaluation" class="headerlink" title="Evaluation"></a>Evaluation</h3><h4 id="Constituent-accuracies"><a href="#Constituent-accuracies" class="headerlink" title="Constituent accuracies"></a>Constituent accuracies</h4><p>We can map our parse tree to a set of constituents, both for human-analyated tree, which act as the gold standard in test data, and for output parse tree of our parser.</p>
 <p><img src="../img/nlp/precision_recall.png"></p>
 <p>$$<br>\text{Recall}=100\%\times\frac{C}{G} \qquad\text{Precision}=100\%\times\frac{C}{P}<br>$$</p>
-<h4 id="Dependency-Accuracies"><a href="#Dependency-Accuracies" class="headerlink" title="Dependency  Accuracies"></a>Dependency  Accuracies</h4><p>We can also convert a tree into a set of dependencies. An example is as follows, where the first column is the headword, the second is the modifier word</p>
+<h4 id="Dependency-Accuracies"><a href="#Dependency-Accuracies" class="headerlink" title="Dependency  Accuracies"></a>Dependency  Accuracies</h4><p>We can also convert a tree into a set of dependencies. An example is as follows, where the first column is the headword and the second is the modifier word. The rule production is a label of the type of dependency involved. For example, $&lt;\text{saw}_3, \text{man}_2,S\rightarrow_2 NP\text{ }\text{ }VP&gt;$ reveals a subject-verb dependency. Note that the number of dependencies is equal to the number of words in the sentence. We can then calculate recall and precision. The general recall and precision should be the same since the tree in gold standard and the tree testing will have the same number of dependencies. But we can calculate precision/recall on particular dependency types (e.g., look at all subject/verb dependencies$\Rightarrow $all dependencies with label S$\rightarrow_2$ NP VP) and identify those problematic dependencies.<br><img src="../img/nlp/dependency.png"></p>
 
       
     </div>
