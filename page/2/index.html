@@ -856,7 +856,10 @@
           
             <h3 id="逆变换法"><a href="#逆变换法" class="headerlink" title="逆变换法"></a>逆变换法</h3><p>随机变量$X$的分布函数为$F(x)$，定义$F^{-1}(y)=\inf \{x:F(x)\ge y\},0\le y\le1$. 有定理：设随机变量$U$服从$(0,1)$上均匀分布，则$X=F^{-1}(U)$的分布函数为$F(x)$. ($P(X\le x)=P(F^{-1}(U)\le x)=P(U\le F(x))=F(x)$)</p>
 <p>例：设$X_1,\cdots, X_n$是来自$F(x)$的一个样本，$Y_1=\min(X_1,\cdots,X_n)$，我们要产生来自$Y_1$的随机数。产生$n$个来自$F(x)$的独立随机变量并求最小值是不必要的，如下可直接产生来自$G(y)$的随机数，譬如，若$F(x)=x,0\le x\le 1,$ 则$Y_1=1-U^{1/n}$.<br>$$<br>F_{Y_1}(y)=1-[1-F(y)]^n:=G(y)\\<br>Y_1=G^{-1}(U)=F^{-1}(1-(1-U)^{1/n})=F^{-1}(1-U^{1/n})<br>$$<br>又例：设连续随机变量$X$的密度函数为<br>$$<br>p(x)=\begin{cases}<br>c_i,\quad x_i\le x&lt;x_{i+1}, i=0,\cdots,n-1\\<br>0, \quad\text{otherwise}<br>\end{cases}\\<br>\text{where }c_i&gt;0, a=x_0&lt;\cdots&lt;x_n=b<br>$$<br>令$p_i=\int_a^{x_i}f(x){\rm d}x,i=1,\cdots, n$，则对任一$x$，令$i=\max\{j:x_j\le x\}$，有$F(x)=p_i+c_i(x-x_i)$，由$\boldsymbol{F(X)=U}$可解出$X=x_i+(U-p_i)/c_i$，由$i$定义，$p_i\le U&lt;p_{i+1}$. 所以首先产生$(0,1)$上随机数$U$，然后确定$i$，最后计算$x=x_i+(u-x_i)/c_i$.</p>
-<h3 id="合成法"><a href="#合成法" class="headerlink" title="合成法"></a>合成法</h3><h3 id="筛选法"><a href="#筛选法" class="headerlink" title="筛选法"></a>筛选法</h3>
+<h3 id="合成法"><a href="#合成法" class="headerlink" title="合成法"></a>合成法</h3><p>如果$X$的密度函数$p(x)$难于抽样，而$X$关于$Y$的条件密度函数$p(x|y)$以及$Y$的密度函数$g(y)$均易于抽样，则$X$的随机数可先按$Y$的分布$g(y)$抽取$y$，然后由条件分布$p(x|y)$抽取$x$. </p>
+<p>例：设$X$的密度函数为$p(x)=\sum_{i=1}^n \alpha_ip_i(x)$，其中诸$\alpha_i&gt;0,\sum_{i=1}^n\alpha_i=1$，$p_i(x)$是密度函数。令$\alpha_0=0$。则$X$的随机数可如下抽取：(1)由$U(0,1)$抽取$u$；(2)确定$i$，使$\sum_{j=0}^{i-1}\alpha_j&lt;u\le\sum_{j=0}^i\alpha_j$；(3)由$p_i(x)$抽取$x$.</p>
+<p>譬如 ，$p(x)=(1+2x)/6,0&lt;x&lt;2$，其分布函数为$F(x)=(x+x^2)/6$，若用逆变换法抽样，则要解二次方程，较为麻烦。考虑用合成法，将$p(x)$分解，$p_1(x)=1/2,0&lt;x&lt;2,$$p_2(x)=x/2,0&lt;x&lt;2$,$\alpha_1=1/3,\alpha_2=2/3$. 则先由$U(0,1)$独立地抽取$u_1,u_2$，然后计算<br>$$<br>x=\begin{cases}<br>2u_2,&amp;u_1&lt;1/3\\<br>2\sqrt{u_2},&amp;u_1\ge1/3\\<br>\end{cases}<br>$$</p>
+<h3 id="筛选法"><a href="#筛选法" class="headerlink" title="筛选法"></a>筛选法</h3>
           
         
       
