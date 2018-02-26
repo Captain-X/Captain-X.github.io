@@ -84,16 +84,19 @@
 
 
 
-<meta name="description" content="逆变换法合成法筛选法">
+<meta name="description" content="逆变换法随机变量$X$的分布函数为$F(x)$，定义$F^{-1}(y)=\inf \{x:F(x)\ge y\},0\le y\le1$. 有定理：设随机变量$U$服从$(0,1)$上均匀分布，则$X=F^{-1}(U)$的分布函数为$F(x)$. ($P(X\le x)=P(F^{-1}(U)\le x)=P(U\le F(x))=F(x)$)
+例：设$X_1,\cdots, X_n$是来自$">
 <meta property="og:type" content="article">
 <meta property="og:title" content="随机数的产生">
 <meta property="og:url" content="https://Captain-X.github.io/6.1/index.html">
 <meta property="og:site_name" content="Vinci">
-<meta property="og:description" content="逆变换法合成法筛选法">
-<meta property="og:updated_time" content="2018-01-09T06:23:34.937Z">
+<meta property="og:description" content="逆变换法随机变量$X$的分布函数为$F(x)$，定义$F^{-1}(y)=\inf \{x:F(x)\ge y\},0\le y\le1$. 有定理：设随机变量$U$服从$(0,1)$上均匀分布，则$X=F^{-1}(U)$的分布函数为$F(x)$. ($P(X\le x)=P(F^{-1}(U)\le x)=P(U\le F(x))=F(x)$)
+例：设$X_1,\cdots, X_n$是来自$">
+<meta property="og:updated_time" content="2018-02-26T13:32:06.387Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="随机数的产生">
-<meta name="twitter:description" content="逆变换法合成法筛选法">
+<meta name="twitter:description" content="逆变换法随机变量$X$的分布函数为$F(x)$，定义$F^{-1}(y)=\inf \{x:F(x)\ge y\},0\le y\le1$. 有定理：设随机变量$U$服从$(0,1)$上均匀分布，则$X=F^{-1}(U)$的分布函数为$F(x)$. ($P(X\le x)=P(F^{-1}(U)\le x)=P(U\le F(x))=F(x)$)
+例：设$X_1,\cdots, X_n$是来自$">
 
 
 
@@ -315,7 +318,9 @@
       
 
       
-        <h3 id="逆变换法"><a href="#逆变换法" class="headerlink" title="逆变换法"></a>逆变换法</h3><h3 id="合成法"><a href="#合成法" class="headerlink" title="合成法"></a>合成法</h3><h3 id="筛选法"><a href="#筛选法" class="headerlink" title="筛选法"></a>筛选法</h3>
+        <h3 id="逆变换法"><a href="#逆变换法" class="headerlink" title="逆变换法"></a>逆变换法</h3><p>随机变量$X$的分布函数为$F(x)$，定义$F^{-1}(y)=\inf \{x:F(x)\ge y\},0\le y\le1$. 有定理：设随机变量$U$服从$(0,1)$上均匀分布，则$X=F^{-1}(U)$的分布函数为$F(x)$. ($P(X\le x)=P(F^{-1}(U)\le x)=P(U\le F(x))=F(x)$)</p>
+<p>例：设$X_1,\cdots, X_n$是来自$F(x)$的一个样本，$Y_1=\min(X_1,\cdots,X_n)$，我们要产生来自$Y_1$的随机数。产生$n$个来自$F(x)$的独立随机变量并求最小值是不必要的，如下可直接产生来自$G(y)$的随机数，譬如，若$F(x)=x,0\le x\le 1,$ 则$Y_1=1-U^{1/n}$.<br>$$<br>F_{Y_1}(y)=1-[1-F(y)]^n:=G(y)\\<br>Y_1=G^{-1}(U)=F^{-1}(1-(1-U)^{1/n})=F^{-1}(1-U^{1/n})<br>$$<br>又例：设连续随机变量$X$的密度函数为<br>$$<br>p(x)=\begin{cases}<br>c_i,\quad x_i\le x&lt;x_{i+1}, i=0,\cdots,n-1\\<br>0, \quad\text{otherwise}<br>\end{cases}\\<br>\text{where }c_i&gt;0, a=x_0&lt;\cdots&lt;x_n=b<br>$$<br>令$p_i=\int_a^{x_i}f(x){\rm d}x,i=1,\cdots, n$，则对任一$x$，令$i=\max\{j:x_j\le x\}$，有$F(x)=p_i+c_i(x-x_i)$，由$\boldsymbol{F(X)=U}$可解出$X=x_i+(U-p_i)/c_i$，由$i$定义，$p_i\le U&lt;p_{i+1}$. 所以首先产生$(0,1)$上随机数$U$，然后确定$i$，最后计算$x=x_i+(u-x_i)/c_i$.</p>
+<h3 id="合成法"><a href="#合成法" class="headerlink" title="合成法"></a>合成法</h3><h3 id="筛选法"><a href="#筛选法" class="headerlink" title="筛选法"></a>筛选法</h3>
       
     </div>
 
